@@ -1,22 +1,21 @@
 import 'package:fish_redux/fish_redux.dart';
-
 import 'effect.dart';
-import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
+import 'reducer.dart';
 
-class GuidePage extends Page<GuideState, Map<String, dynamic>> {
-  GuidePage()
+class FirstPage extends Page<FirstState, Map<String, dynamic>> {
+  FirstPage()
       : super(
             initState: initState,
             effect: buildEffect(),
             reducer: buildReducer(),
             view: buildView,
-            dependencies: Dependencies<GuideState>(
+            dependencies: Dependencies<FirstState>(
                 adapter: null,
-                slots: <String, Dependent<GuideState>>{
+                slots: <String, Dependent<FirstState>>{
                 }),
-            middleware: <Middleware<GuideState>>[
+            middleware: <Middleware<FirstState>>[
             ],);
 
 }

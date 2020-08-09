@@ -1,7 +1,7 @@
 import 'package:fish_redux/fish_redux.dart';
 
 class CountState implements Cloneable<CountState> {
-  int count = 0;
+  int count;
 
   @override
   CountState clone() {
@@ -10,5 +10,5 @@ class CountState implements Cloneable<CountState> {
 }
 
 CountState initState(Map<String, dynamic> args) {
-  return CountState();
+  return CountState()..count = 0;
 }
