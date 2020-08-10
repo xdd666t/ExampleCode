@@ -1,7 +1,9 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:fish_redux/fish_redux.dart';
 import 'package:fish_redux_demo/list/item/state.dart';
+
 import 'action.dart';
 import 'bean/item_detail_bean.dart';
 import 'state.dart';
@@ -14,29 +16,13 @@ Effect<ListState> buildEffect() {
 }
 
 void _init(Action action, Context<ListState> ctx) async {
-  print("....");
-
-  try{
-    String apiUrl = "https://www.wanandroid.com/project/list/1/json";
-
-    print(apiUrl);
-    Response response = await Dio().get(apiUrl);
-    print(response.toString().substring(0, 100));
-
-    ItemDetailBean itemDetailBean = json.decode(response.toString());
-
-    print(itemDetailBean.data.datas[0]);
-
-    List<ItemState> items =
-    List.generate(itemDetailBean.data.datas.length, (index) {
-      return ItemState(itemDetail: itemDetailBean.data.datas[index]);
-    });
-
-    println(items);
-    ctx.dispatch(ListActionCreator.updateItem(items));
-  }catch(e) {
-    print(e);
-  }
-
-
+  String apiUrl = "https://www.wanandroid.com/project/list/1/json";
+  Response response = await Dio().get(apiUrl);
+  ItemDetailBean itemDetailBean =
+      ItemDetailBean.fromJson(json.decode(response.toString()));
+  List<Datas> itemDetails = itemDetailBean.data.datas;
+  List<ItemState> items = List.generate(itemDetails.length, (index) {
+    return ItemState(itemDetail: itemDetails[index]);
+  });
+  ctx.dispatch(ListActionCreator.updateItem(items));
 }
