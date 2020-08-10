@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'state.dart';
@@ -16,7 +17,7 @@ Widget _bodyWidget(ItemState state) {
       children: <Widget>[
         //左边图片
         Container(
-          margin: EdgeInsets.all(20),
+          margin: EdgeInsets.all(10),
           width: 180,
           height: 100,
           child: Image.network(
@@ -27,8 +28,8 @@ Widget _bodyWidget(ItemState state) {
         //右边的纵向布局
         Expanded(
             child: Container(
-          margin: EdgeInsets.all(20),
-          height: 150,
+          margin: EdgeInsets.all(10),
+          height: 120,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -39,7 +40,7 @@ Widget _bodyWidget(ItemState state) {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     state.itemDetail.title,
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 16),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -47,13 +48,15 @@ Widget _bodyWidget(ItemState state) {
               ),
               //内容
               Expanded(
-                  flex: 5,
+                  flex: 4,
                   child: Container(
                     alignment: Alignment.centerLeft,
-                    child: Text(state.itemDetail.desc,
-                        style: TextStyle(fontSize: 15),
-                        maxLines: 3,
-                        overflow: TextOverflow.ellipsis),
+                    child: Text(
+                      state.itemDetail.desc,
+                      style: TextStyle(fontSize: 12),
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   )),
               Expanded(
                 flex: 3,
@@ -63,20 +66,21 @@ Widget _bodyWidget(ItemState state) {
                     //作者
                     Row(
                       children: <Widget>[
-                        Text("作者："),
+                        Text("作者：", style: TextStyle(fontSize: 12)),
                         Expanded(
                           child: Text(state.itemDetail.author,
-                              style: TextStyle(color: Colors.blue),
+                              style:
+                                  TextStyle(color: Colors.blue, fontSize: 12),
                               overflow: TextOverflow.ellipsis),
                         )
                       ],
                     ),
                     //时间
                     Row(children: <Widget>[
-                      Text("时间："),
+                      Text("时间：", style: TextStyle(fontSize: 12)),
                       Expanded(
                         child: Text(state.itemDetail.niceDate,
-                            style: TextStyle(color: Colors.blue),
+                            style: TextStyle(color: Colors.blue, fontSize: 12),
                             overflow: TextOverflow.ellipsis),
                       )
                     ])
