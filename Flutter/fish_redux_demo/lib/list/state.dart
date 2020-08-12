@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:fish_redux/fish_redux.dart';
 import 'package:fish_redux_demo/list/adapter.dart';
 import 'package:fish_redux_demo/list/item/state.dart';
+import 'package:fish_redux_demo/store/state.dart';
 
-class ListState extends MutableSource implements Cloneable<ListState> {
+class ListState extends MutableSource implements Cloneable<ListState>,GlobalBaseState {
   ///这地方一定要注意,List里面的泛型,需要定义为ItemState
   ///怎么更新列表数据,只需要更新这个items里面的数据,列表数据就会相应更新
   List<ItemState> items;
@@ -26,6 +29,9 @@ class ListState extends MutableSource implements Cloneable<ListState> {
   void setItemData(int index, Object data) {
     items[index] = data;
   }
+
+  @override
+  Color themeColor;
 }
 
 ListState initState(Map<String, dynamic> args) {

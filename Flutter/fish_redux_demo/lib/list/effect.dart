@@ -21,6 +21,7 @@ void _init(Action action, Context<ListState> ctx) async {
   ItemDetailBean itemDetailBean =
       ItemDetailBean.fromJson(json.decode(response.toString()));
   List<Datas> itemDetails = itemDetailBean.data.datas;
+  ///构建符合要求的列表数据源
   List<ItemState> items = List.generate(itemDetails.length, (index) {
     return ItemState(itemDetail: itemDetails[index]);
   });

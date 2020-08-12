@@ -5,13 +5,14 @@ import 'action.dart';
 import 'state.dart';
 
 Widget buildView(GuideState state, Dispatch dispatch, ViewService viewService) {
-  return _bodyWidget(dispatch);
+  return _bodyWidget(state, dispatch);
 }
 
-Widget _bodyWidget(Dispatch dispatch) {
+Widget _bodyWidget(GuideState state,Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
-      title: Text("FirstPage"),
+      title: Text("GuidePage"),
+      backgroundColor: state.themeColor,
     ),
     body: Center(
       child: Column(
@@ -25,6 +26,9 @@ Widget _bodyWidget(Dispatch dispatch) {
           }),
           _jumpButton("toList", () {
             dispatch(GuideActionCreator.toList());
+          }),
+          _jumpButton("switchTheme", () {
+            dispatch(GuideActionCreator.switchTheme());
           }),
         ],
       ),
