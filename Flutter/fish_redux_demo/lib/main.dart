@@ -3,9 +3,12 @@ import 'package:fish_redux_demo/guide/page.dart';
 import 'package:fish_redux_demo/jump/first/page.dart';
 import 'package:fish_redux_demo/jump/second/page.dart';
 import 'package:fish_redux_demo/list/page.dart';
+import 'package:fish_redux_demo/list_edit/page.dart';
 import 'package:flutter/cupertino.dart' hide Page;
 import 'package:flutter/material.dart' hide Page;
 import 'count/page.dart';
+import 'count_jump/one/page.dart';
+import 'count_jump/two/page.dart';
 import 'store/state.dart';
 import 'store/store.dart';
 
@@ -53,8 +56,13 @@ Widget createApp() {
       "FirstPage": FirstPage(),
       "SecondPage": SecondPage(),
 
+      ///计数器模块和页面跳转模块结合
+      "OnePage": OnePage(),
+      "TwoPage": TwoPage(),
+
       ///列表模块演示
       "ListPage": ListPage(),
+      "ListEditPage": ListEditPage(),
     },
   );
 
@@ -74,3 +82,4 @@ Widget createApp() {
     },
   );
 }
+

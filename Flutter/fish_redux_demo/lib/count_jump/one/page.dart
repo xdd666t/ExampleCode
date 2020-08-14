@@ -1,23 +1,22 @@
 import 'package:fish_redux/fish_redux.dart';
 
-import 'adapter.dart';
 import 'effect.dart';
 import 'reducer.dart';
 import 'state.dart';
 import 'view.dart';
 
-class ListPage extends Page<ListState, Map<String, dynamic>> {
-  ListPage()
+class OnePage extends Page<OneState, Map<String, dynamic>> {
+  OnePage()
       : super(
             initState: initState,
             effect: buildEffect(),
             reducer: buildReducer(),
             view: buildView,
-            dependencies: Dependencies<ListState>(
-                adapter: NoneConn<ListState>() + ListItemAdapter(),
-                slots: <String, Dependent<ListState>>{
+            dependencies: Dependencies<OneState>(
+                adapter: null,
+                slots: <String, Dependent<OneState>>{
                 }),
-            middleware: <Middleware<ListState>>[
+            middleware: <Middleware<OneState>>[
             ],);
 
 }

@@ -1,17 +1,19 @@
 import 'package:fish_redux/fish_redux.dart';
 
 class ItemState implements Cloneable<ItemState> {
-
-  String title;
-  String subTitle;
-  bool section;
   int id;
+  String title;
+  bool itemStatus;
 
-  ItemState({this.id,this.title,this.subTitle,this.section});
+
+  ItemState({this.id, this.title, this.itemStatus});
 
   @override
   ItemState clone() {
-    return ItemState()..title = title..subTitle = subTitle..section = section..id = id;
+    return ItemState()
+      ..title = title
+      ..itemStatus = itemStatus
+      ..id = id;
   }
 }
 

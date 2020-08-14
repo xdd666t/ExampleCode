@@ -1,17 +1,16 @@
 import 'package:fish_redux/fish_redux.dart';
 import 'package:flutter/material.dart';
 
-import 'action.dart';
 import 'state.dart';
 
-Widget buildView(ListState state, Dispatch dispatch, ViewService viewService) {
+Widget buildView(ListEditState state, Dispatch dispatch, ViewService viewService) {
   return Scaffold(
-    appBar: AppBar(),
-    body: state.itemList!=null ?  ListView.builder(
+    appBar: AppBar(
+      title: Text("ListEditPage"),
+    ),
+    body: ListView.builder(
       itemBuilder: viewService.buildAdapter().itemBuilder,
       itemCount: viewService.buildAdapter().itemCount,
-    ) : Center(
-      child: CircularProgressIndicator(),
     ),
   );
 }

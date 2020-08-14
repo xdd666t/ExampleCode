@@ -24,8 +24,14 @@ Widget _bodyWidget(GuideState state,Dispatch dispatch) {
           _jumpButton("toJump", () {
             dispatch(GuideActionCreator.toJump());
           }),
+          _jumpButton("countJump", () {
+            dispatch(GuideActionCreator.countJump());
+          }),
           _jumpButton("toList", () {
             dispatch(GuideActionCreator.toList());
+          }),
+          _jumpButton("toListEdit", () {
+            dispatch(GuideActionCreator.toListEdit());
           }),
           _jumpButton("switchTheme", () {
             dispatch(GuideActionCreator.switchTheme());

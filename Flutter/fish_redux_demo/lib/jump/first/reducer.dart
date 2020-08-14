@@ -14,6 +14,5 @@ Reducer<FirstState> buildReducer() {
 
 FirstState _updateMsg(FirstState state, Action action) {
   return state.clone()
-    ..themeColor = state.themeColor
     ..msg = action.payload;
 }
