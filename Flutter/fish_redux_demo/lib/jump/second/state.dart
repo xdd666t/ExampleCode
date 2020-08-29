@@ -14,11 +14,11 @@ class SecondState implements Cloneable<SecondState>, GlobalBaseState {
   SecondState clone() {
     return SecondState()
       ..msg = msg
-      ..themeColor = themeColor;
+      ..store = store;
   }
 
   @override
-  Color themeColor;
+  StoreModel store;
 }
 
 SecondState initState(Map<String, dynamic> args) {

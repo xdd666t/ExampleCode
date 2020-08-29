@@ -1,7 +1,9 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:fish_redux_demo/main.dart';
 import 'package:fish_redux_demo/store/action.dart';
 import 'package:fish_redux_demo/store/store.dart';
 import 'package:flutter/cupertino.dart' hide Action;
+
 import 'action.dart';
 import 'state.dart';
 
@@ -9,7 +11,6 @@ Effect<GuideState> buildEffect() {
   return combineEffects(<Object, Effect<GuideState>>{
     GuideAction.toCount: _toCount,
     GuideAction.toJump: _toJump,
-    GuideAction.countJump: _countJump,
     GuideAction.toList: _toList,
     GuideAction.toListEdit: _toListEdit,
     GuideAction.switchTheme: _switchTheme,
@@ -17,28 +18,22 @@ Effect<GuideState> buildEffect() {
 }
 
 void _toCount(Action action, Context<GuideState> ctx) {
-  Navigator.of(ctx.context).pushNamed("CountPage");
+  Navigator.pushNamed(ctx.context, RouteConfig.countPage);
 }
 
 void _toJump(Action action, Context<GuideState> ctx) {
-  Navigator.of(ctx.context).pushNamed("FirstPage");
-}
-
-void _countJump(Action action, Context<GuideState> ctx) {
-  Navigator.of(ctx.context).pushNamed("OnePage");
+  Navigator.pushNamed(ctx.context, RouteConfig.firstPage);
 }
 
 void _toList(Action action, Context<GuideState> ctx) {
-  Navigator.of(ctx.context).pushNamed("ListPage");
+  Navigator.pushNamed(ctx.context, RouteConfig.listPage);
 }
 
 void _toListEdit(Action action, Context<GuideState> ctx) {
-  Navigator.of(ctx.context).pushNamed("ListEditPage");
+  Navigator.pushNamed(ctx.context, RouteConfig.listEditPage);
 }
-
 
 ///全局切换主体
 void _switchTheme(Action action, Context<GuideState> ctx) {
-  print(".............");
   GlobalStore.store.dispatch(GlobalActionCreator.onChangeThemeColor());
 }

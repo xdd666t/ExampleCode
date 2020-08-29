@@ -19,7 +19,7 @@ Widget _bodyWidget(SecondState state) {
   return Scaffold(
     appBar: AppBar(
       title: Text("SecondPage"),
-      backgroundColor: state.themeColor,
+      backgroundColor: state.store.themeColor,
     ),
     body: Center(
       child: Column(

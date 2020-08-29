@@ -12,7 +12,8 @@ class ListState extends MutableSource implements Cloneable<ListState>,GlobalBase
 
   @override
   ListState clone() {
-    return ListState()..items = items;
+    return ListState()..items = items
+        ..store = store;
   }
 
   ///使用上面定义的List,继承MutableSource,就把列表和item绑定起来了
@@ -31,7 +32,7 @@ class ListState extends MutableSource implements Cloneable<ListState>,GlobalBase
   }
 
   @override
-  Color themeColor;
+  StoreModel store;
 }
 
 ListState initState(Map<String, dynamic> args) {

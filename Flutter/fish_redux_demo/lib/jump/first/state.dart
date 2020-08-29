@@ -14,11 +14,12 @@ class FirstState implements Cloneable<FirstState>, GlobalBaseState {
   FirstState clone() {
     return FirstState()
       ..msg = msg
-      ..themeColor = themeColor;
+      ..store = store;
   }
 
+
   @override
-  Color themeColor;
+  StoreModel store;
 }
 
 FirstState initState(Map<String, dynamic> args) {

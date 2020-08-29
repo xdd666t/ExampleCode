@@ -12,7 +12,7 @@ Widget _bodyWidget(FirstState state, Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
       title: Text("FirstPage"),
-      backgroundColor: state.themeColor,
+      backgroundColor: state.store.themeColor,
     ),
     body: Center(
       child: Column(
