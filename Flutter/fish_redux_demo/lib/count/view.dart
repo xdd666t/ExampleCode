@@ -13,7 +13,7 @@ Widget _bodyWidget(CountState state, Dispatch dispatch) {
     appBar: AppBar(
       title: Text("FishRedux"),
       ///全局主题，仅仅在此处改动了一行
-      backgroundColor: state.themeColor,
+      backgroundColor: state.store.themeColor,
     ),
     body: Center(
       child: Column(

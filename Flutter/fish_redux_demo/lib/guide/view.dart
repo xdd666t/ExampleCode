@@ -8,11 +8,11 @@ Widget buildView(GuideState state, Dispatch dispatch, ViewService viewService) {
   return _bodyWidget(state, dispatch);
 }
 
-Widget _bodyWidget(GuideState state,Dispatch dispatch) {
+Widget _bodyWidget(GuideState state, Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
       title: Text("GuidePage"),
-      backgroundColor: state.themeColor,
+      backgroundColor: state.store.themeColor,
     ),
     body: Center(
       child: Column(
@@ -23,9 +23,6 @@ Widget _bodyWidget(GuideState state,Dispatch dispatch) {
           }),
           _jumpButton("toJump", () {
             dispatch(GuideActionCreator.toJump());
-          }),
-          _jumpButton("countJump", () {
-            dispatch(GuideActionCreator.countJump());
           }),
           _jumpButton("toList", () {
             dispatch(GuideActionCreator.toList());
@@ -46,7 +43,8 @@ typedef CallBack = void Function();
 
 Widget _jumpButton(String name, CallBack callBack) {
   return InkWell(
-    customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+    customBorder:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     splashColor: Colors.lightBlueAccent,
     highlightColor: Colors.lightBlueAccent,
     child: RaisedButton(
