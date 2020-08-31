@@ -17,9 +17,9 @@
 - fish-redux使用
   - 教程：[掘金：fish_redux使用详解---看完就会用！](https://juejin.im/post/6860029460524040199)
     - 备用：[CSDN：fish_redux使用详解---看完就会用！](https://blog.csdn.net/CNAD666/article/details/107963034)
-  - 代码Demo：https://github.com/CNAD666/ExampleCode/tree/master/Flutter/fish_redux_demo
+  - [代码demo地址](https://github.com/CNAD666/ExampleCode/tree/master/Flutter/fish_redux_demo)
 - flutter_bloc使用
   - 教程：[掘金：flutter_bloc使用解析---骚年，你还在手搭bloc吗！](https://juejin.im/post/6856268776510504968)
     - 备用：[CSDN：flutter_bloc使用解析---骚年，你还在手搭bloc吗！](https://blog.csdn.net/CNAD666/article/details/107744163)
-  - 代码demo：https://github.com/CNAD666/book_web_manage
+  - [代码demo地址](https://github.com/CNAD666/book_web_manage)
 
