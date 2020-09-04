@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:fish_redux_demo/comp/page.dart';
 import 'package:fish_redux_demo/guide/page.dart';
 import 'package:fish_redux_demo/jump/first/page.dart';
 import 'package:fish_redux_demo/jump/second/page.dart';
@@ -45,6 +46,9 @@ class RouteConfig {
   static const String listPage = 'page/list';
   static const String listEditPage = 'page/listEdit';
 
+  ///Component
+  static const String componentPage = 'page/component';
+
   static final AbstractRoutes routes = PageRoutes(
     pages: <String, Page<Object, dynamic>>{
       ///将你的路由名称和页面映射在一起，比如：RouteConfig.homePage : HomePage(),
@@ -54,6 +58,7 @@ class RouteConfig {
       RouteConfig.secondPage: SecondPage(),
       RouteConfig.listPage: ListPage(),
       RouteConfig.listEditPage: ListEditPage(),
+      RouteConfig.componentPage: CompPage(),
     },
     visitor: StoreConfig.visitor,
   );

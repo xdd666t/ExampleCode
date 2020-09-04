@@ -30,6 +30,9 @@ Widget _bodyWidget(GuideState state, Dispatch dispatch) {
           _jumpButton("toListEdit", () {
             dispatch(GuideActionCreator.toListEdit());
           }),
+          _jumpButton("toComponent", () {
+            dispatch(GuideActionCreator.toComponent());
+          }),
           _jumpButton("switchTheme", () {
             dispatch(GuideActionCreator.switchTheme());
           }),

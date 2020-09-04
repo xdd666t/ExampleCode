@@ -13,6 +13,7 @@ Effect<GuideState> buildEffect() {
     GuideAction.toJump: _toJump,
     GuideAction.toList: _toList,
     GuideAction.toListEdit: _toListEdit,
+    GuideAction.toComponent: _toComponent,
     GuideAction.switchTheme: _switchTheme,
   });
 }
@@ -31,6 +32,10 @@ void _toList(Action action, Context<GuideState> ctx) {
 
 void _toListEdit(Action action, Context<GuideState> ctx) {
   Navigator.pushNamed(ctx.context, RouteConfig.listEditPage);
+}
+
+void _toComponent(Action action, Context<GuideState> ctx) {
+  Navigator.pushNamed(ctx.context, RouteConfig.componentPage);
 }
 
 ///全局切换主体
