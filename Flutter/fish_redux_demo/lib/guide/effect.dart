@@ -1,4 +1,5 @@
 import 'package:fish_redux/fish_redux.dart';
+import 'package:fish_redux_demo/broadcast/action.dart';
 import 'package:fish_redux_demo/main.dart';
 import 'package:fish_redux_demo/store/action.dart';
 import 'package:fish_redux_demo/store/store.dart';
@@ -15,6 +16,8 @@ Effect<GuideState> buildEffect() {
     GuideAction.toListEdit: _toListEdit,
     GuideAction.toComponent: _toComponent,
     GuideAction.switchTheme: _switchTheme,
+    //接受发送的广播消息
+    BroadcastAction.toNotify: _receiveNotify,
   });
 }
 
@@ -41,4 +44,10 @@ void _toComponent(Action action, Context<GuideState> ctx) {
 ///全局切换主体
 void _switchTheme(Action action, Context<GuideState> ctx) {
   GlobalStore.store.dispatch(GlobalActionCreator.onChangeThemeColor());
+}
+
+///表明一处发送，多处接受
+void _receiveNotify(Action action, Context<GuideState> ctx) async {
+  ///接受广播
+  print("导航页面:${action.payload}");
 }

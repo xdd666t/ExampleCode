@@ -14,7 +14,6 @@ class CompPage extends Page<CompState, Map<String, dynamic>> {
           dependencies: Dependencies<CompState>(
               adapter: null,
               slots: <String, Dependent<CompState>>{
-                //绑定Component
                 "leftArea": LeftAreaConnector() + AreaComponent(),
                 "rightArea": RightAreaConnector() + AreaComponent(),
               }),
