@@ -15,5 +15,5 @@ void _backFirst(Action action, Context<SecondState> ctx) {
   Navigator.pop(ctx.context, {"secondValue": SecondState.fixedMsg});
 
   ///广播通信
-  ctx.broadcast(BroadcastActionCreator.toTest("页面二发送广播通知"));
+  ctx.broadcast(BroadcastActionCreator.toNotify("页面二发送广播通知"));
 }
