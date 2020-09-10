@@ -35,9 +35,7 @@ class LeftAreaConnector extends ConnOp<CompState, AreaState>
     with ReselectMixin<CompState, AreaState> {
   @override
   AreaState computed(CompState state) {
-    return state.leftAreaState.clone()
-      ..color = state.leftAreaState.color
-      ..text = state.leftAreaState.text;
+    return state.leftAreaState.clone();
   }
 
   @override
@@ -51,9 +49,7 @@ class RightAreaConnector extends ConnOp<CompState, AreaState>
     with ReselectMixin<CompState, AreaState> {
   @override
   AreaState computed(CompState state) {
-    return state.rightAreaState.clone()
-      ..color = state.rightAreaState.color
-      ..text = state.rightAreaState.text;
+    return state.rightAreaState.clone();
   }
 
   @override
