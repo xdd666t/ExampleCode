@@ -22,4 +22,3 @@
   - 教程：[掘金：flutter_bloc使用解析---骚年，你还在手搭bloc吗！](https://juejin.im/post/6856268776510504968)
     - 备用：[CSDN：flutter_bloc使用解析---骚年，你还在手搭bloc吗！](https://blog.csdn.net/CNAD666/article/details/107744163)
   - [代码demo地址](https://github.com/CNAD666/book_web_manage)
-
