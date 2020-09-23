@@ -35,11 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
 
-    var list = [];
+    List<InfoBean> list = [];
     for (var i = 0; i < 10; i++) {
       list.add(InfoBean(name: "姓名-$i", id: i));
     }
-    showBottomSingleDialog(
+    showBottomSingleDialog<InfoBean>(
       context,
       list: list,
       showKey: 'name',

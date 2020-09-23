@@ -7,23 +7,23 @@ import 'package:flutter_use_demo/app/typedef/function.dart';
 
 ///List泛型可以随意指定都行
 ///展示内容item默认为 "name" 可以使用 showKey字段指定展示key值
-void showBottomSingleDialog(
+void showBottomSingleDialog<E>(
   BuildContext context, {
-  @required List<dynamic> list,
-  @required ParamSingleCallback callback,
+  @required List<E> list,
+  @required ParamSingleCallback<dynamic, E> callback,
   String title = '请选择',
   String showKey = '',
 }) {
-  List<PickerItem<dynamic>> pickList = [];
-  for (dynamic item in list) {
+  List<PickerItem<E>> pickList = [];
+  for (E item in list) {
 
     String showContent;
     if (showKey == '') {
       //兼容泛型为String的情况
-      showContent = item;
+      showContent = item as String;
     } else {
       //将实体转成map，通过设置的key指定展示的字段
-      dynamic map = json.decode(jsonEncode(item));
+      var map = json.decode(jsonEncode(item));
       showContent = map[showKey];
     }
 
@@ -36,7 +36,7 @@ void showBottomSingleDialog(
   }
 
   Picker(
-    adapter: PickerDataAdapter<dynamic>(data: pickList),
+    adapter: PickerDataAdapter<E>(data: pickList),
     hideHeader: false,
     title: Text(title),
     cancelText: "取消",
