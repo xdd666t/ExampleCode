@@ -10,7 +10,7 @@ import 'package:flutter_use_demo/app/typedef/function.dart';
 void showBottomSingleDialog<E>(
   BuildContext context, {
   @required List<E> list,
-  @required ParamSingleCallback<dynamic, E> callback,
+  @required ParamSingleCallback<E> callback,
   String title = '请选择',
   String showKey = '',
 }) {
