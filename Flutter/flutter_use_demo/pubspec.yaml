@@ -28,8 +28,19 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3
-  #时间滚轮选择器
-  flutter_picker: ^1.1.5
+# 弹窗
+  # https://pub.dev/packages/flutter_picker
+  flutter_picker: ^1.1.5 #时间滚轮选择器
+# 解耦框架
+  # https://pub.dev/packages/flutter_bloc
+  flutter_bloc: ^6.0.6 #状态管理框架
+  equatable: ^1.2.3 #增强对比
+  # https://pub.dev/packages/flutter_hooks
+  flutter_hooks: ^0.14.1 #分离状态逻辑和视图逻辑
+# 路由管理
+  # https://pub.dev/packages/fluro
+  fluro: ^1.6.3 #路由管理框架
+  flutter_screenutil: ^1.0.2  # 界面适配
 
 dev_dependencies:
   flutter_test:
