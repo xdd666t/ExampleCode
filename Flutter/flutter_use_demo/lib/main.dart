@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_use_demo/module/main/main_view.dart';
-import 'package:flutter_use_demo/views/dialog/bottom/data/bottom_single_dialog.dart';
+import 'package:fluro/fluro.dart';
+import 'package:flutter/material.dart' hide Page, Router;
+
+import 'app/routes/application.dart';
+import 'app/routes/routes.dart';
+import 'module/main/main_view.dart';
+import 'views/dialog/bottom/data/bottom_single_dialog.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,13 +14,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    //路由初始化代码
+    final router = Router();
+    Routes.configureRoutes(router);
+    Application.router = router;
 
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+    return MaterialApp(
+      onGenerateRoute: Application.router.generator,
       home: MainPage(),
     );
   }
@@ -35,7 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
   void _incrementCounter() {
-
     List<InfoBean> list = [];
     for (var i = 0; i < 10; i++) {
       list.add(InfoBean(name: "姓名-$i", id: i));
@@ -83,7 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
 
 class InfoBean {
   String name;

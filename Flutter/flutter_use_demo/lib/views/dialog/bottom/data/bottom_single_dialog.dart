@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_picker/Picker.dart';
 import 'package:flutter_use_demo/app/typedef/function.dart';
-
+import 'package:flutter_use_demo/app/utils/ui/auto_ui.dart';
 
 ///List泛型可以随意指定都行
 ///展示内容item默认为 "name" 可以使用 showKey字段指定展示key值
@@ -16,7 +16,6 @@ void showBottomSingleDialog<E>(
 }) {
   List<PickerItem<E>> pickList = [];
   for (E item in list) {
-
     String showContent;
     if (showKey == '') {
       //兼容泛型为String的情况
@@ -29,14 +28,16 @@ void showBottomSingleDialog<E>(
 
     pickList.add(
       PickerItem(
-        text: Text(showContent),
+        text: Center(child: Text(showContent)),
         value: item,
       ),
     );
   }
 
-  Picker(
+  Picker picker = Picker(
     adapter: PickerDataAdapter<E>(data: pickList),
+    itemExtent: auto(45),
+    height: auto(280),
     hideHeader: false,
     title: Text(title),
     cancelText: "取消",
@@ -46,5 +47,16 @@ void showBottomSingleDialog<E>(
       await Future.delayed(Duration(milliseconds: 10));
       callback(picker.getSelectedValues()[0]);
     },
-  ).showModal(context);
+  );
+
+  showModalBottomSheet(
+    context: context,
+    backgroundColor: Colors.transparent,
+    builder: (BuildContext context) {
+      return ClipRRect(
+        borderRadius: BorderRadius.circular(auto(5)),
+        child: picker.makePicker(),
+      );
+    },
+  );
 }

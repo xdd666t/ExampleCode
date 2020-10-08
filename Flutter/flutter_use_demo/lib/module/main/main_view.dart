@@ -1,34 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_use_demo/app/utils/ui/auto_ui.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_use_demo/module/main/main_bloc.dart';
+import 'package:flutter_use_demo/module/main/widget/side_navigation.dart';
 
 class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: _body(),
-    );
-  }
-
-  Widget _body() {
-    return Container(
-      padding: EdgeInsets.all(auto(20)),
-      width: double.infinity,
-      child: Wrap(
-        spacing: auto(20),
-        children: MainState().init().list.map((e) {
-          return _item(e);
-        }).toList(),
+    return BlocProvider(
+      ///在MainBloc上使用add方法,添加初始化事件
+      create: (BuildContext context) => MainBloc()..add(MainInitEvent()),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: _body(),
       ),
     );
   }
 
-  Widget _item(BtnInfo btnInfo) {
-    return Container(
-      height: auto(50),
-      width: auto(50),
-      color: Colors.indigoAccent,
+  ///主体模块
+  Widget _body() {
+    var _pageController = PageController();
+
+    return BlocBuilder<MainBloc, MainState>(
+      builder: (context, state) {
+        return Row(
+          children: [
+            ///侧边栏区域
+            SideNavigation(
+              selectedIndex: state.selectedIndex,
+              sideItems: state.itemList,
+              onItem: (index) {
+                context
+                    .bloc<MainBloc>()
+                    .add(SwitchTabEvent(selectedIndex: index));
+                _pageController.jumpToPage(index);
+              },
+            ),
+
+            ///Expanded占满剩下的空间
+            Expanded(
+              child: _mainBodyPage(_pageController, state),
+            )
+          ],
+        );
+      },
+    );
+  }
+
+  ///NavigationRail右边的区域,使用PageView,主体内容页面
+  Widget _mainBodyPage(PageController pageController, MainState state) {
+    return PageView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      itemCount: state.pageList.length,
+      itemBuilder: (context, index) => state.pageList[index],
+      controller: pageController,
     );
   }
 }

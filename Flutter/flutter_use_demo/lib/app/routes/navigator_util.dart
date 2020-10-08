@@ -9,10 +9,10 @@ class NavigatorUtil {
     Application.router.pop(context);
   }
 
-  /// 跳转到登录页面
-  static void goLoginPage(BuildContext context) {
+  /// 跳转到dialog页面
+  static void goDialogPage(BuildContext context) {
     /// Routes.home 路由地址
     /// replace：true 将上级页面给替换掉了，这点后退键的时候就不会再出现上级页面  false：就是不替换
-    Application.router.navigateTo(context, Routes.main, replace: false);
+    Application.router.navigateTo(context, Routes.dialog, replace: false);
   }
 }
