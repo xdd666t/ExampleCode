@@ -20,8 +20,8 @@ class MainState {
         icon: Icon(Icons.bubble_chart),
       ),
       BtnInfo(
-        title: "数据",
-        icon: Icon(Icons.description),
+        title: "范例",
+        icon: Icon(Icons.opacity),
       ),
       BtnInfo(
         title: "设置",
@@ -32,7 +32,7 @@ class MainState {
     ///PageView页面
     List<Widget> pageList = [
       FunctionPage(),
-      Center(child: Container()),
+      ExamplePage(),
       Center(child: Container()),
     ];
 
