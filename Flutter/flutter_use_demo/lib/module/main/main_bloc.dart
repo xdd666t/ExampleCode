@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_use_demo/app/utils/ui/keep_alive_page.dart';
 import 'package:flutter_use_demo/bean/common/btn_info.dart';
 import 'package:flutter_use_demo/module/example/example_view.dart';
 import 'package:flutter_use_demo/module/function/function_view.dart';

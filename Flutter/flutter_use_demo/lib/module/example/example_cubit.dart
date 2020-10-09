@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter_use_demo/app/routes/navigator_util.dart';
 import 'package:flutter_use_demo/bean/common/btn_info.dart';
+import 'package:flutter_use_demo/bean/common/tree_info.dart';
 
 part 'example_state.dart';
 

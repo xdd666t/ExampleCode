@@ -1,8 +1,8 @@
 import 'btn_info.dart';
 
-///等级 分级
-class LevelTwiceInfo {
-  LevelTwiceInfo({
+///树形信息
+class TreeTwiceInfo {
+  TreeTwiceInfo({
     this.title,
     this.btnInfo,
   });
@@ -11,5 +11,5 @@ class LevelTwiceInfo {
   String title;
 
   ///二级内容
-  BtnInfo btnInfo;
+  List btnInfo;
 }

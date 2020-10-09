@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_use_demo/module/function/widget/function_items.dart';
 
 import 'example_cubit.dart';
+import 'widget/tree_items.dart';
 
 class ExamplePage extends StatelessWidget {
   @override
@@ -17,10 +18,10 @@ class ExamplePage extends StatelessWidget {
   Widget _body() {
     return BlocBuilder<ExampleCubit, ExampleState>(
       builder: (context, state) {
-        return FunctionItems(
-          items: state.items,
-          onItem: (String tag) {
-            context.bloc<ExampleCubit>().toFun(context, tag);
+        return TreeItems(
+          data: state.trees,
+          onItem: (String tag){
+            print(tag);
           },
         );
       },

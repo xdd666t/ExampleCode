@@ -7,6 +7,7 @@ class FunctionItems extends StatelessWidget {
     this.items,
     this.onItem,
     this.constraints = const BoxConstraints(minWidth: 150, minHeight: 36.0),
+    this.padding = const EdgeInsets.all(30),
   });
 
   ///数据源
@@ -17,6 +18,10 @@ class FunctionItems extends StatelessWidget {
 
   ///约束布局
   final BoxConstraints constraints;
+
+  ///边距
+  final EdgeInsetsGeometry padding;
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +48,7 @@ class FunctionItems extends StatelessWidget {
   ///整体背景
   Widget _buildBg({child}) {
     return Container(
-      padding: EdgeInsets.all(30),
+      padding: padding,
       child: SingleChildScrollView(
         child: Material( 
           color: Colors.white,
