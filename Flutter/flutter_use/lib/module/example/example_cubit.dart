@@ -12,7 +12,7 @@ class ExampleCubit extends Cubit<ExampleState> {
   void toFun(context, tag) {
     switch (tag) {
       case 'cubit':
-        NavigatorUtil.goDialogPage(context);
+        NavigatorUtil.goCounterPage(context);
         break;
     }
   }

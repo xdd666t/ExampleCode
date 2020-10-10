@@ -6,6 +6,7 @@ import 'route_handler.dart';
 class Routes {
   static String main = "/";
   static String dialog = "/dialog";
+  static String counter = "/counter";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(
@@ -18,5 +19,6 @@ class Routes {
     /// 我这边先不设置默认的转场动画，转场动画在下面会讲，可以在另外一个地方设置（可以看NavigatorUtil类）
     router.define(main, handler: mainPageHandler);
     router.define(dialog, handler: dialogPageHandler);
+    router.define(counter, handler: counterPageHandler);
   }
 }

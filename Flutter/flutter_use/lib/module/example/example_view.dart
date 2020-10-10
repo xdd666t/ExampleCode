@@ -19,7 +19,7 @@ class ExamplePage extends StatelessWidget {
     return TreeItems(
       data: state.trees,
       onItem: (String tag) {
-        print(tag);
+        context.bloc<ExampleCubit>().toFun(context, tag);
       },
     );
   }

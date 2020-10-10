@@ -15,4 +15,11 @@ class NavigatorUtil {
     /// replace：true 将上级页面给替换掉了，这点后退键的时候就不会再出现上级页面  false：就是不替换
     Application.router.navigateTo(context, Routes.dialog, replace: false);
   }
+
+  /// 跳转到Cubit范例页面
+  static void goCounterPage(BuildContext context) {
+    /// Routes.home 路由地址
+    /// replace：true 将上级页面给替换掉了，这点后退键的时候就不会再出现上级页面  false：就是不替换
+    Application.router.navigateTo(context, Routes.counter, replace: false);
+  }
 }
