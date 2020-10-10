@@ -11,6 +11,7 @@ class MainState {
 
   ///PageView页面
   List<Widget> pageList;
+  PageController pageController;
 
   MainState init() {
     ///item栏目
@@ -39,15 +40,15 @@ class MainState {
     return MainState()
       ..pageList = pageList
       ..itemList = itemList
+      ..pageController = PageController()
       ..selectedIndex = 0;
   }
 
   MainState clone() {
     return MainState()
+      ..pageController = pageController
       ..selectedIndex = selectedIndex
       ..itemList = itemList
       ..pageList = pageList;
   }
 }
-
-

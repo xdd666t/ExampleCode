@@ -11,19 +11,15 @@ class FunctionPage extends StatelessWidget {
     return BlocProvider(
       ///在MainBloc上使用add方法,添加初始化事件
       create: (BuildContext context) => FunctionCubit(),
-      child: _body(),
+      child: BlocBuilder<FunctionCubit, FunctionState>(builder: _body),
     );
   }
 
-  Widget _body() {
-    return BlocBuilder<FunctionCubit, FunctionState>(
-      builder: (context, state) {
-        return FunctionItems(
-          items: state.items,
-          onItem: (String tag) {
-            context.bloc<FunctionCubit>().toFun(context, tag);
-          },
-        );
+  Widget _body(BuildContext context, FunctionState state) {
+    return FunctionItems(
+      items: state.items,
+      onItem: (String tag) {
+        context.bloc<FunctionCubit>().toFun(context, tag);
       },
     );
   }

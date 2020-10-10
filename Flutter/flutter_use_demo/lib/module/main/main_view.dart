@@ -11,38 +11,30 @@ class MainPage extends StatelessWidget {
       create: (BuildContext context) => MainBloc()..add(MainInitEvent()),
       child: Scaffold(
         backgroundColor: Colors.white,
-        body: _body(),
+        body: BlocBuilder<MainBloc, MainState>(builder: _body),
       ),
     );
   }
 
   ///主体模块
-  Widget _body() {
-    var _pageController = PageController();
+  Widget _body(BuildContext context, MainState state) {
+    return Row(
+      children: [
+        ///侧边栏区域
+        SideNavigation(
+          selectedIndex: state.selectedIndex,
+          sideItems: state.itemList,
+          onItem: (index) {
+            context.bloc<MainBloc>().add(SwitchTabEvent(selectedIndex: index));
+            state.pageController.jumpToPage(index);
+          },
+        ),
 
-    return BlocBuilder<MainBloc, MainState>(
-      builder: (context, state) {
-        return Row(
-          children: [
-            ///侧边栏区域
-            SideNavigation(
-              selectedIndex: state.selectedIndex,
-              sideItems: state.itemList,
-              onItem: (index) {
-                context
-                    .bloc<MainBloc>()
-                    .add(SwitchTabEvent(selectedIndex: index));
-                _pageController.jumpToPage(index);
-              },
-            ),
-
-            ///Expanded占满剩下的空间
-            Expanded(
-              child: _mainBodyPage(_pageController, state),
-            )
-          ],
-        );
-      },
+        ///Expanded占满剩下的空间
+        Expanded(
+          child: _mainBodyPage(state.pageController, state),
+        )
+      ],
     );
   }
 

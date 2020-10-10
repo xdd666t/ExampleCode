@@ -12,24 +12,18 @@ class DialogPage extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(),
-        body: _body(),
+        body: BlocBuilder<DialogCubit, DialogState>(builder: _body),
       ),
     );
   }
 
-
-  Widget _body(){
-    return BlocBuilder<DialogCubit, DialogState>(
-      builder: (context, state) {
-        return FunctionItems(
-          items: state.items,
-          constraints: BoxConstraints(minWidth: 100, minHeight: 36),
-          onItem: (String tag) {
-            context.bloc<DialogCubit>().showFun(context, tag);
-          },
-        );
+  Widget _body(BuildContext context, DialogState state) {
+    return FunctionItems(
+      items: state.items,
+      constraints: BoxConstraints(minWidth: 100, minHeight: 36),
+      onItem: (String tag) {
+        context.bloc<DialogCubit>().showFun(context, tag);
       },
     );
   }
-
 }

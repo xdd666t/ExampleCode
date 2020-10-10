@@ -11,19 +11,15 @@ class ExamplePage extends StatelessWidget {
     return BlocProvider(
       ///在MainBloc上使用add方法,添加初始化事件
       create: (BuildContext context) => ExampleCubit(),
-      child: _body(),
+      child: BlocBuilder<ExampleCubit, ExampleState>(builder: _body),
     );
   }
 
-  Widget _body() {
-    return BlocBuilder<ExampleCubit, ExampleState>(
-      builder: (context, state) {
-        return TreeItems(
-          data: state.trees,
-          onItem: (String tag){
-            print(tag);
-          },
-        );
+  Widget _body(BuildContext context, ExampleState state) {
+    return TreeItems(
+      data: state.trees,
+      onItem: (String tag) {
+        print(tag);
       },
     );
   }
