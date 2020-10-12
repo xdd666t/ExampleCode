@@ -22,7 +22,6 @@ class FunctionItems extends StatelessWidget {
   ///边距
   final EdgeInsetsGeometry padding;
 
-
   @override
   Widget build(BuildContext context) {
     return _function();
@@ -50,7 +49,7 @@ class FunctionItems extends StatelessWidget {
     return Container(
       padding: padding,
       child: SingleChildScrollView(
-        child: Material( 
+        child: Material(
           color: Colors.white,
           child: child,
         ),
@@ -82,7 +81,10 @@ Widget btnFunction({
           vertical: auto(15),
           horizontal: auto(20),
         ),
-        child: Text(data.title),
+        child: Text(
+          data.title,
+          style: TextStyle(height: 1),
+        ),
       ),
     ),
   );

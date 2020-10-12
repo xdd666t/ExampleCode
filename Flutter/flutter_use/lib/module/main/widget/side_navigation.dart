@@ -75,7 +75,13 @@ class SideNavigation extends HookWidget {
       destinations: sideItems.map((item) {
         return NavigationRailDestination(
           icon: item.icon,
-          label: Text(item.title),
+          label: Container(
+            padding: EdgeInsets.only(top: auto(10)),
+            child: Text(
+              item.title,
+              style: TextStyle(height: 1),
+            ),
+          ),
         );
       }).toList(),
       //顶部widget
