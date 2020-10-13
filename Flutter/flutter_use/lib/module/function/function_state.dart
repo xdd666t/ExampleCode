@@ -5,7 +5,7 @@ class FunctionState {
 
   FunctionState init() {
     var items = [
-      BtnInfo(title: 'dialog弹窗', tag: 'dialog'),
+      BtnInfo(title: '弹窗控件', tag: 'dialog'),
       BtnInfo(title: '测试', tag: 'test'),
       BtnInfo(title: '测试', tag: 'test'),
       BtnInfo(title: '测试', tag: 'test'),
