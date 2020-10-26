@@ -83,7 +83,6 @@ Widget btnFunction({
         ),
         child: Text(
           data.title,
-          style: TextStyle(height: 1),
         ),
       ),
     ),
