@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_use_demo/app/config/images/common_images.dart';
 import 'package:flutter_use_demo/app/typedef/function.dart';
 import 'package:flutter_use_demo/app/utils/ui/auto_ui.dart';
 import 'package:flutter_use_demo/views/widget/input/input_actions.dart';
@@ -72,7 +72,9 @@ class _SearchBarState extends State<SearchBar>
           buildSearchInput(),
 
           //删除图标
-          Expanded(child: buildSearchDelete())
+          Expanded(
+            child: buildSearchDelete(),
+          )
         ],
       ),
     );
@@ -92,10 +94,10 @@ class _SearchBarState extends State<SearchBar>
           scale: animation,
           child: Container(
             padding: EdgeInsets.all(auto(10)),
-            child: Image.asset(
-              CommonImages.search_delete,
-              height: auto(30),
-              width: auto(30),
+            child: Icon(
+              CupertinoIcons.clear_circled_solid,
+              size: auto(38),
+              color: Color(0xFF999999).withOpacity(0.7),
             ),
           ),
         ),
@@ -105,7 +107,7 @@ class _SearchBarState extends State<SearchBar>
 
   Widget buildSearchInput() {
     return Container(
-      width: auto(434),
+      width: auto(500),
       padding: EdgeInsets.only(left: auto(24)),
       child: InputActions(
         context: context,
