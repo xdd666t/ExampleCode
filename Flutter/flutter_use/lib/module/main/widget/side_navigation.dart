@@ -79,7 +79,6 @@ class SideNavigation extends HookWidget {
             padding: EdgeInsets.only(top: auto(10)),
             child: Text(
               item.title,
-              style: TextStyle(height: 1),
             ),
           ),
         );
