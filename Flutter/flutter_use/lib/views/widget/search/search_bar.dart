@@ -97,7 +97,7 @@ class _SearchBarState extends State<SearchBar>
             child: Icon(
               CupertinoIcons.clear_circled_solid,
               size: auto(38),
-              color: Color(0xFF999999).withOpacity(0.7),
+              color: Color(0xFFCCCCCC).withOpacity(0.9),
             ),
           ),
         ),
