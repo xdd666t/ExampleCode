@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_use_demo/app/typedef/function.dart';
 import 'package:flutter_use_demo/app/utils/ui/auto_ui.dart';
 import 'package:flutter_use_demo/views/widget/input/input_actions.dart';
 
-///此控件基本都已相关元素减少依赖
+///此控件已减少相关依赖
 ///此控件进行少量导包修改即可移植其它项目使用
+typedef SearchParamSingleCallback<D> = dynamic Function(D data);
+typedef SearchParamVoidCallback = dynamic Function();
+
 class SearchBar extends StatefulWidget {
   SearchBar({
     this.inputFormatters,
@@ -17,6 +19,9 @@ class SearchBar extends StatefulWidget {
     this.autofocus,
     this.onChanged,
     this.iconColor = const Color(0xFFCCCCCC),
+    this.onComplete,
+    this.controller,
+    this.onClear,
   });
 
   ///限制输入条件
@@ -39,7 +44,16 @@ class SearchBar extends StatefulWidget {
   final Color iconColor;
 
   ///回调输入的数据
-  final ParamSingleCallback<String> onChanged;
+  final SearchParamSingleCallback<String> onChanged;
+
+  ///输入完成  点击键盘上: 收缩,Ok等按钮
+  final SearchParamSingleCallback<String> onComplete;
+
+  ///删除监听
+  final SearchParamVoidCallback onClear;
+
+  ///输入框控制器
+  final TextEditingController controller;
 
   @override
   _SearchBarState createState() => _SearchBarState();
@@ -48,7 +62,7 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar>
     with SingleTickerProviderStateMixin {
   FocusNode focusNode;
-  TextEditingController inputController;
+  TextEditingController controller;
 
   ///动画
   AnimationController animationController;
@@ -59,7 +73,7 @@ class _SearchBarState extends State<SearchBar>
     super.initState();
 
     focusNode = FocusNode();
-    inputController = TextEditingController();
+    controller = widget.controller ?? TextEditingController();
     animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 500),
@@ -67,6 +81,17 @@ class _SearchBarState extends State<SearchBar>
     animation = Tween(begin: 0.0, end: 1.0)
         .chain(CurveTween(curve: Curves.easeIn))
         .animate(animationController);
+
+    //监听输入框数值变化
+    controller.addListener(() {
+      //处理下删除图标的显示
+      String msg = controller.text;
+      if (msg.length != 0) {
+        animationController.forward();
+      } else {
+        animationController.reverse();
+      }
+    });
   }
 
   @override
@@ -101,7 +126,15 @@ class _SearchBarState extends State<SearchBar>
         onTap: () {
           //处理下删除逻辑
           animationController.reverse();
-          inputController.clear();
+          controller.clear();
+
+          if (widget.onChanged != null) {
+            widget.onChanged(controller.text);
+          }
+
+          if (widget.onClear != null) {
+            widget.onClear();
+          }
         },
         child: ScaleTransition(
           scale: animation,
@@ -127,7 +160,7 @@ class _SearchBarState extends State<SearchBar>
         focusNode: focusNode,
         child: TextField(
           focusNode: focusNode,
-          controller: inputController,
+          controller: controller,
           keyboardType: widget.keyboardType,
           autofocus: widget.autofocus ?? false,
           textAlign: TextAlign.start,
@@ -137,6 +170,7 @@ class _SearchBarState extends State<SearchBar>
           ),
           inputFormatters: widget.inputFormatters,
           maxLengthEnforced: true,
+          textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             ///较小空间时，使组件正常渲染，包括文本垂直居中
             isDense: true,
@@ -149,15 +183,17 @@ class _SearchBarState extends State<SearchBar>
             contentPadding: EdgeInsets.all(0.0),
           ),
           onChanged: (msg) {
-            //处理下删除图标的显示
-            if (msg.length != 0) {
-              animationController.forward();
-            } else {
-              animationController.reverse();
+            //监听输入的数值
+            if (widget.onChanged != null) {
+              widget.onChanged(msg);
+            }
+          },
+          onEditingComplete: () {
+            if (widget.onComplete != null) {
+              widget.onComplete(controller.text);
             }
 
-            //监听输入的数值
-            widget.onChanged(msg);
+            FocusScope.of(context).requestFocus(FocusNode());
           },
         ),
       ),
@@ -188,5 +224,6 @@ class _SearchBarState extends State<SearchBar>
   void dispose() {
     super.dispose();
     animationController.dispose();
+    controller.dispose();
   }
 }
