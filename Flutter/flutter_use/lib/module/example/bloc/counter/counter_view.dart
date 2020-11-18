@@ -18,7 +18,7 @@ class CounterPage extends StatelessWidget {
         child: Text('点击了 ${state.count} 次', style: TextStyle(fontSize: 30.0)),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.bloc<CounterCubit>().increase(),
+        onPressed: () => BlocProvider.of<CounterCubit>(context).increase(),
         child: const Icon(Icons.add),
       ),
     );

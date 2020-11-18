@@ -31,7 +31,7 @@ dependencies:
   # 常用弹窗 https://pub.dev/packages/flutter_picker
   flutter_picker: ^1.1.5 #时间滚轮选择器
   # 解耦框架 https://pub.dev/packages/flutter_bloc
-  flutter_bloc: ^6.0.6 #状态管理框架
+  flutter_bloc: ^6.1.1 #状态管理框架
   equatable: ^1.2.3 #增强对比
   # https://pub.dev/packages/flutter_hooks
   flutter_hooks: ^0.14.1 #分离状态逻辑和视图逻辑

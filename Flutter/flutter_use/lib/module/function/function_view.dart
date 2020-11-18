@@ -19,7 +19,7 @@ class FunctionPage extends StatelessWidget {
     return FunctionItems(
       items: state.items,
       onItem: (String tag) {
-        context.bloc<FunctionCubit>().toFun(context, tag);
+        BlocProvider.of<FunctionCubit>(context).toFun(context, tag);
       },
     );
   }

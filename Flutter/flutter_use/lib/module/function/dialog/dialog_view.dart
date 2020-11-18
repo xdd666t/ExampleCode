@@ -22,7 +22,7 @@ class DialogPage extends StatelessWidget {
       items: state.items,
       constraints: BoxConstraints(minWidth: 100, minHeight: 36),
       onItem: (String tag) {
-        context.bloc<DialogCubit>().showFun(context, tag);
+        BlocProvider.of<DialogCubit>(context).showFun(context, tag);
       },
     );
   }
