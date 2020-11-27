@@ -4,9 +4,17 @@ import 'package:flutter/material.dart' hide Router;
 import 'route_handler.dart';
 
 class Routes {
+  ///主页面
   static String main = "/";
+
+  ///dialog页面
   static String dialog = "/dialog";
+
+  ///bloc计数器模块
   static String counter = "/counter";
+
+  ///测试布局页面
+  static String testLayout = "/testLayout";
 
   static void configureRoutes(Router router) {
     router.notFoundHandler = new Handler(
@@ -20,5 +28,6 @@ class Routes {
     router.define(main, handler: mainPageHandler);
     router.define(dialog, handler: dialogPageHandler);
     router.define(counter, handler: counterPageHandler);
+    router.define(testLayout, handler: testLayoutPageHandler);
   }
 }

@@ -10,22 +10,16 @@ class ExampleState {
         title: 'flutter_bloc',
         btnInfo: [
           BtnInfo(title: 'Cubit', tag: 'cubit'),
-          BtnInfo(title: '测试', tag: 'test1'),
-          BtnInfo(title: '测试', tag: 'test2'),
-          BtnInfo(title: '测试', tag: 'test3'),
-          BtnInfo(title: '测试', tag: 'test4'),
         ],
       ),
-      //测试
+
+      //布局
       TreeTwiceInfo(
-        title: '测试',
+        title: '布局',
         btnInfo: [
-          BtnInfo(title: '测试', tag: 'test1'),
-          BtnInfo(title: '测试', tag: 'test2'),
-          BtnInfo(title: '测试', tag: 'test3'),
-          BtnInfo(title: '测试', tag: 'test4'),
+          BtnInfo(title: '测试布局', tag: 'testLayout'),
         ],
-      )
+      ),
     ];
     return ExampleState()..trees = trees;
   }

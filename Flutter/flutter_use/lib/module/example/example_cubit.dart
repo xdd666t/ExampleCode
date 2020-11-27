@@ -14,6 +14,9 @@ class ExampleCubit extends Cubit<ExampleState> {
       case 'cubit':
         NavigatorUtil.goCounterPage(context);
         break;
+      case 'testLayout':
+        NavigatorUtil.goTestLayoutPage(context);
+        break;
     }
   }
 }
