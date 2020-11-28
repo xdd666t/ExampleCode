@@ -38,7 +38,7 @@ class SmartDialog {
       child: Container(
         height: 200,
         width: 500,
-        color: Colors.transparent,
+        color: Colors.deepOrange,
       ),
       onBgTap: () {
         dismiss();

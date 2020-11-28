@@ -20,8 +20,8 @@ class TestLayoutPage extends StatelessWidget {
           alignment: Alignment.center,
           children: [
             //底下
-            GestureDetector(
-              onTap: (){
+            Listener(
+              onPointerDown: (event) {
                 showSnackBar(context, '底部蓝色区域++++++++');
               },
               child: Container(
@@ -31,16 +31,15 @@ class TestLayoutPage extends StatelessWidget {
               ),
             ),
 
-            //上面
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () {
+            //上面 事件穿透
+            Listener(
+              behavior: HitTestBehavior.translucent,
+              onPointerDown: (event) {
                 showSnackBar(context, '上面红色区域---------');
               },
               child: Container(
                 height: 200,
                 width: 200,
-                color: Colors.transparent,
               ),
             ),
           ],

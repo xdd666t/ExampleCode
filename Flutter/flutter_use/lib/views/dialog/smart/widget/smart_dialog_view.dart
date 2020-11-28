@@ -64,21 +64,19 @@ class SmartDialogViewState extends State<SmartDialogView>
   Widget build(BuildContext context) {
     return _buildBg(children: [
       //背景
-      IgnorePointer(
-        ignoring: !widget.isPenetrate,
-        child: AnimatedOpacity(
-          duration: widget.animationDuration,
-          curve: Curves.linear,
-          opacity: _opacity,
-          child: GestureDetector(
-            onTap: () async {
-              if (widget.onBgTap != null) {
-                widget.onBgTap();
-              }
-            },
-            child: Container(
-              color: Colors.black.withOpacity(0.3),
-            ),
+      AnimatedOpacity(
+        duration: widget.animationDuration,
+        curve: Curves.linear,
+        opacity: _opacity,
+        child: Listener(
+          behavior: HitTestBehavior.translucent,
+          onPointerUp: (event) async {
+            if (widget.onBgTap != null) {
+              widget.onBgTap();
+            }
+          },
+          child: Container(
+            color: widget.isPenetrate ? null : Colors.black.withOpacity(0.3),
           ),
         ),
       ),

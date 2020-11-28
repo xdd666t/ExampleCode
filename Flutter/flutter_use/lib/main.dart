@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart' hide Page, Router;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:flutter_use_demo/views/dialog/smart/flutter_smart_dialog.dart';
 
 import 'app/routes/application.dart';
 import 'app/routes/routes.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       builder: (BuildContext context, Widget child) {
         return Material(
           type: MaterialType.transparency,
-          child: FlutterEasyLoading(child: child),
+          child: FlutterSmartDialog(child: FlutterEasyLoading(child: child),),
         );
       },
     );
