@@ -33,7 +33,7 @@ class TestLayoutPage extends StatelessWidget {
 
             //上面
             GestureDetector(
-              behavior: HitTestBehavior.translucent,
+              behavior: HitTestBehavior.opaque,
               onTap: () {
                 showSnackBar(context, '上面红色区域---------');
               },
