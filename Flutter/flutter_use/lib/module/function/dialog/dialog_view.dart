@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_use_demo/module/function/dialog/dialog_cubit.dart';
-import 'package:flutter_use_demo/module/function/widget/function_items.dart';
+import 'package:flutter_use/module/function/dialog/dialog_cubit.dart';
+import 'package:flutter_use/module/function/widget/function_items.dart';
 
 class DialogPage extends StatelessWidget {
   @override

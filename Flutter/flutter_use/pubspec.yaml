@@ -1,4 +1,4 @@
-name: flutter_use_demo
+name: flutter_use
 description: A new Flutter application.
 
 # The following line prevents the package from being accidentally published to
@@ -36,7 +36,7 @@ dependencies:
   # https://pub.dev/packages/flutter_hooks
   flutter_hooks: ^0.14.1 #分离状态逻辑和视图逻辑
   # 路由管理 https://pub.dev/packages/fluro
-  fluro: ^1.6.3 #路由管理框架
+  fluro: ^1.7.8 #路由管理框架
   # 界面适配 https://pub.dev/packages/flutter_screenutil
   flutter_screenutil: ^3.2.0
   # 加载弹窗 https://pub.dev/packages/flutter_easyloading

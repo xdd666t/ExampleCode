@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_use_demo/module/function/widget/function_items.dart';
+import 'package:flutter_use/module/function/widget/function_items.dart';
 
 import 'function_cubit.dart';
 import 'function_state.dart';

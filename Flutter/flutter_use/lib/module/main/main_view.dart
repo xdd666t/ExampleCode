@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_use_demo/module/main/main_bloc.dart';
-import 'package:flutter_use_demo/module/main/widget/side_navigation.dart';
+import 'package:flutter_use/module/main/main_bloc.dart';
+import 'package:flutter_use/module/main/widget/side_navigation.dart';
 
 class MainPage extends StatelessWidget {
   @override

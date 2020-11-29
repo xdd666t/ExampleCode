@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_use_demo/bean/common/btn_info.dart';
-import 'package:flutter_use_demo/views/dialog/bottom/data/bottom_single_dialog.dart';
+import 'package:flutter_use/bean/common/btn_info.dart';
+import 'package:flutter_use/views/dialog/bottom/data/bottom_single_dialog.dart';
 
 part 'dialog_state.dart';
 

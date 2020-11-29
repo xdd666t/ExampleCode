@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_use_demo/module/example/screen_adapt/screen_adapt_cubit.dart';
+import 'package:flutter_use/module/example/screen_adapt/screen_adapt_cubit.dart';
 
 class ScreenAdaptView extends StatelessWidget {
   @override

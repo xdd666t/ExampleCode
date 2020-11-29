@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_use_demo/app/utils/ui/show.dart';
-import 'package:flutter_use_demo/module/example/layout/test_layout/test_layout_cubit.dart';
+import 'package:flutter_use/app/utils/ui/show.dart';
+import 'package:flutter_use/module/example/layout/test_layout/test_layout_cubit.dart';
 
 class TestLayoutPage extends StatelessWidget {
   @override

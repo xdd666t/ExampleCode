@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
-project(flutter_use_demo LANGUAGES CXX)
+project(flutter_use LANGUAGES CXX)
 
-set(BINARY_NAME "flutter_use_demo")
+set(BINARY_NAME "flutter_use")
 
 cmake_policy(SET CMP0063 NEW)
 

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_use_demo/app/routes/navigator_util.dart';
+import 'package:flutter_use/app/routes/navigator_util.dart';
 
 import 'function_state.dart';
 

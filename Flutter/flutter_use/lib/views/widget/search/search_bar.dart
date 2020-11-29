@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_use_demo/app/utils/ui/auto_ui.dart';
-import 'package:flutter_use_demo/views/widget/input/input_actions.dart';
+import 'package:flutter_use/app/utils/ui/auto_ui.dart';
+import 'package:flutter_use/views/widget/input/input_actions.dart';
 
 ///此控件已减少相关依赖
 ///此控件进行少量导包修改即可移植其它项目使用

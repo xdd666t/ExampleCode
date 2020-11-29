@@ -1,9 +1,9 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_use_demo/module/example/bloc/counter/counter_view.dart';
-import 'package:flutter_use_demo/module/example/layout/test_layout/test_layout_view.dart';
-import 'package:flutter_use_demo/module/function/dialog/dialog_view.dart';
-import 'package:flutter_use_demo/module/main/main_view.dart';
+import 'package:flutter_use/module/example/bloc/counter/counter_view.dart';
+import 'package:flutter_use/module/example/layout/test_layout/test_layout_view.dart';
+import 'package:flutter_use/module/function/dialog/dialog_view.dart';
+import 'package:flutter_use/module/main/main_view.dart';
 
 /// 主页
 Handler mainPageHandler = Handler(

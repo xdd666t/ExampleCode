@@ -1,6 +1,6 @@
 {
-    "name": "flutter_use_demo",
-    "short_name": "flutter_use_demo",
+    "name": "flutter_use",
+    "short_name": "flutter_use",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
