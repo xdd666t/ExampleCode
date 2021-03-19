@@ -1,0 +1,27 @@
+.title-bar{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.title-back{
+  position: absolute;
+  left: 0;
+  display: flex;
+  margin-left: 20rpx
+}
+.title-back-img{
+  height: 40rpx;
+  width: 40rpx;
+  margin-top: 6rpx;
+}
+.title-back-text{
+  margin-top: 3rpx;
+  font-size: 32rpx;
+  color: #333333;
+}
+.title-content{
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+}

@@ -1,0 +1,19 @@
+
+
+ <!-- 标题栏 -->
+  <view class="title-bar" style="height:{{navBarHeight}}px;padding-top:{{statusBar}}px;">
+    <!-- 左边返回按钮 -->
+    <!-- 黑色样式 -->
+    <view class="title-back" wx:if="{{backStyle == 'black'}}" bindtap="_back" hidden="{{hideBack=='true'}}">
+      <image class="title-back-img" src="/component/title-bar/images/back_black.png"></image>
+      <text class="title-back-text">{{back}}</text>
+    </view> 
+    <!-- 白色样式 -->
+    <view class="title-back" wx:if="{{backStyle == 'white'}}" bindtap="_back" hidden="{{hideBack=='true'}}">
+      <image class="title-back-img" src="/component/title-bar/images/back_white.png"></image>
+      <text class="title-back-text" style="color:#FFFFFF">{{back}}</text>
+    </view>
+    <!-- 内容标题 -->
+    <text class="title-content" style="color:{{titleColor}}">{{title}}</text>
+  </view>
+  
