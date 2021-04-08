@@ -11,7 +11,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView msgTv;
-    private Handler mHandler = new Handler();
+    private Handler mHandler = new Handler(new Handler.Callback() {
+        //接收消息,刷新UI
+        @Override public boolean handleMessage(@NonNull Message msg) {
+            if (msg.what == 1) {
+                msgTv.setText(msg.obj.toString());
+            }
+            //false 重写Handler类的handleMessage会被调用,  true 不会被调用
+            return false;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +31,13 @@ public class MainActivity extends AppCompatActivity {
         mHandler.getLooper().getQueue().addIdleHandler(new InfoIdleHandler("我是IdleHandler"));
         mHandler.getLooper().getQueue().addIdleHandler(new InfoIdleHandler("我是大帅比"));
 
-        //消息收发一体
+        //发送消息
         new Thread(new Runnable() {
             @Override public void run() {
-                String info = "第一种方式";
-                mHandler.post(new Runnable() {
-                    @Override public void run() {
-                        msgTv.setText(info);
-                    }
-                });
+                Message message = Message.obtain();
+                message.what = 1;
+                message.obj = "第二种方式 --- 1";
+                mHandler.sendMessageDelayed(message, 100);
             }
         }).start();
     }
