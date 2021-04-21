@@ -1,14 +1,14 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.MessageQueue;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private TextView msgTv;
@@ -41,15 +41,19 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Message msgOne = Message.obtain();
                 msgOne.what = 1;
-                msgOne.obj = "第二种方式 --- 1";
-                msgOne.setAsynchronous(true);
-                mHandler.sendMessage(msgOne);
+                msgOne.obj = "第二种方式 --- 111";
+                mHandler.sendMessageDelayed(msgOne, 1000);
+
+                Message msgTwo = Message.obtain();
+                msgTwo.what = 1;
+                msgTwo.obj = "第二种方式 --- 2222";
+                mHandler.sendMessageDelayed(msgTwo, 3000);
 
 
                 Message msgThree = Message.obtain();
                 msgThree.what = 1;
-                msgThree.obj = "第二种方式 --- 1111111111111";
-                mHandler.sendMessageDelayed(msgThree, 3000);
+                msgThree.obj = "第二种方式 --- 333";
+                mHandler.sendMessage(msgThree);
             }
         }).start();
     }
