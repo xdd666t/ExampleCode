@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.os.MessageQueue;
 import android.widget.Button;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         //添加IdleHandler实现类
         mHandler.getLooper().getQueue().addIdleHandler(new InfoIdleHandler("我是IdleHandler"));
         mHandler.getLooper().getQueue().addIdleHandler(new InfoIdleHandler("我是大帅比"));
+
+        Looper.myLooper().quit();
 
         //发送消息
         new Thread(new Runnable() {
