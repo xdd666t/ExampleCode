@@ -12,19 +12,19 @@ import 'count/page.dart';
 import 'store/state.dart';
 import 'store/store.dart';
 
-void main() {
-  runApp(createApp());
-}
+void main() => runApp(createApp());
 
 Widget createApp() {
   return MaterialApp(
     title: 'FishRedux',
-    home: RouteConfig.routes.buildPage(RouteConfig.guidePage, null), //作为默认页面
+    home: RouteConfig.routes.buildPage(RouteConfig.guidePage, null),
     onGenerateRoute: (RouteSettings settings) {
-      //ios页面切换风格
-      return CupertinoPageRoute(builder: (BuildContext context) {
-        return RouteConfig.routes.buildPage(settings.name, settings.arguments);
-      });
+      return MaterialPageRoute(
+        builder: (BuildContext context) {
+          return RouteConfig.routes.buildPage(settings.name, settings.arguments);
+        },
+        settings: settings,
+      );
     },
   );
 }
@@ -85,7 +85,6 @@ class StoreConfig {
           }
 
           /// 下列一系列对比...
-
         }
 
         /// 返回新的 state 并将数据设置到 ui
