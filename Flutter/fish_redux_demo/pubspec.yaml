@@ -8,16 +8,19 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^0.1.3
-  fish_redux: ^0.3.4  #咸鱼状态管理框架
-  dio: ^3.0.9    #网络请求框架
-  json_annotation: ^2.4.0 # json序列化和反序列化用的
+  cupertino_icons: ^1.0.8
+  # GitHub leftcoding/fish-redux null safety fork，SDK 约束已兼容 Dart 3
+  fish_redux:
+    git:
+      url: https://github.com/leftcoding/fish-redux.git
+  dio: ^5.4.0    #网络请求框架
+  json_annotation: ^4.9.0 # json序列化和反序列化用的
 
 dev_dependencies:
   flutter_test:

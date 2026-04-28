@@ -7,19 +7,17 @@ class SmartDialog {
   factory SmartDialog() => _getInstance();
 
   static SmartDialog get instance => _getInstance();
-  static SmartDialog _instance;
+  static SmartDialog? _instance;
 
   static SmartDialog _getInstance() {
-    if (_instance == null) {
-      _instance = SmartDialog._internal();
-    }
-    return _instance;
+    _instance ??= SmartDialog._internal();
+    return _instance!;
   }
 
   ///呈现的Widget
-  Widget _widget;
-  GlobalKey<SmartDialogViewState> _key;
-  OverlayEntry overlayEntry;
+  Widget? _widget;
+  GlobalKey<SmartDialogViewState>? _key;
+  OverlayEntry? overlayEntry;
 
   SmartDialog._internal() {
     ///初始化一些参数
@@ -52,7 +50,7 @@ class SmartDialog {
   Future<void> dismiss() async {
     _widget = null;
 
-    SmartDialogViewState smartDialogViewState = _key?.currentState;
+    SmartDialogViewState? smartDialogViewState = _key?.currentState;
     await smartDialogViewState?.dismiss();
 
     rebuild();
@@ -62,6 +60,6 @@ class SmartDialog {
   ///
   /// 实际上是调用OverlayEntry中builder方法,重建布局
   void rebuild() {
-    overlayEntry.markNeedsBuild();
+    overlayEntry?.markNeedsBuild();
   }
 }

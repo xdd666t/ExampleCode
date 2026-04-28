@@ -5,10 +5,7 @@ class TestLayoutState {
     return TestLayoutState();
   }
 
-
   TestLayoutState clone() {
     return TestLayoutState();
   }
-
 }
-

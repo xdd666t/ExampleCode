@@ -11,14 +11,14 @@ Widget buildView(FirstState state, Dispatch dispatch, ViewService viewService) {
 Widget _bodyWidget(FirstState state, Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
-      title: Text("FirstPage"),
-      backgroundColor: state.store.themeColor,
+      title: const Text("FirstPage"),
+      backgroundColor: state.store?.themeColor,
     ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('下方数据是SecondPage页面传递过来的:'),
+          const Text('下方数据是SecondPage页面传递过来的:'),
           Text(state.msg),
         ],
       ),
@@ -28,7 +28,7 @@ Widget _bodyWidget(FirstState state, Dispatch dispatch) {
         ///跳转到Second页面
         dispatch(FirstActionCreator.toSecond());
       },
-      child: Icon(Icons.arrow_forward),
+      child: const Icon(Icons.arrow_forward),
     ),
   );
 }

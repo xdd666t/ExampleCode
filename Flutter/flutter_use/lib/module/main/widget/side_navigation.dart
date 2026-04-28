@@ -6,14 +6,15 @@ import 'package:flutter_use/app/utils/ui/auto_ui.dart';
 
 ///NavigationRail组件为侧边栏
 class SideNavigation extends HookWidget {
-  SideNavigation({
+  const SideNavigation({
+    super.key,
     this.onItem,
-    @required this.selectedIndex,
-    @required this.sideItems,
+    required this.selectedIndex,
+    required this.sideItems,
   });
 
   ///侧边栏item
-  final List sideItems;
+  final List<dynamic> sideItems;
 
   ///选择的index
   final int selectedIndex;
@@ -34,7 +35,7 @@ class SideNavigation extends HookWidget {
         width: auto(80),
         height: auto(80),
         margin: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(
               image: NetworkImage(
@@ -74,11 +75,11 @@ class SideNavigation extends HookWidget {
       //侧边栏中的item
       destinations: sideItems.map((item) {
         return NavigationRailDestination(
-          icon: item.icon,
+          icon: item.icon as Widget,
           label: Container(
             padding: EdgeInsets.only(top: auto(10)),
             child: Text(
-              item.title,
+              item.title as String,
             ),
           ),
         );

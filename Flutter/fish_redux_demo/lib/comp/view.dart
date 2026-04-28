@@ -28,7 +28,7 @@ Widget buildView(CompState state, Dispatch dispatch, ViewService viewService) {
                 fillColor: Colors.blue,
                 shape: StadiumBorder(),
                 onPressed: () => dispatch(CompActionCreator.change()),
-                child: Text("改变"),
+                child: const Text("改变"),
               ),
             ))
       ],

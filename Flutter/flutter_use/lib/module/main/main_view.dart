@@ -4,6 +4,8 @@ import 'package:flutter_use/module/main/main_bloc.dart';
 import 'package:flutter_use/module/main/widget/side_navigation.dart';
 
 class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -25,7 +27,7 @@ class MainPage extends StatelessWidget {
           selectedIndex: state.selectedIndex,
           sideItems: state.itemList,
           onItem: (index) {
-            BlocProvider.of<MainBloc>(context).add(SwitchTabEvent(selectedIndex: index));
+            context.read<MainBloc>().add(SwitchTabEvent(selectedIndex: index));
             state.pageController.jumpToPage(index);
           },
         ),
@@ -41,7 +43,7 @@ class MainPage extends StatelessWidget {
   ///NavigationRail右边的区域,使用PageView,主体内容页面
   Widget _mainBodyPage(PageController pageController, MainState state) {
     return PageView.builder(
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: state.pageList.length,
       itemBuilder: (context, index) => state.pageList[index],
       controller: pageController,

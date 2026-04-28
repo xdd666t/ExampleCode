@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_use/bean/common/btn_info.dart';
 import 'package:flutter_use/views/dialog/bottom/data/bottom_single_dialog.dart';
 
@@ -9,7 +9,7 @@ class DialogCubit extends Cubit<DialogState> {
 
   ///一些事件处理
   ///展示功能模块
-  void showFun(context, tag) {
+  void showFun(BuildContext context, String tag) {
     switch (tag) {
       case 'bottom':
         _bottom(context);
@@ -19,7 +19,7 @@ class DialogCubit extends Cubit<DialogState> {
 }
 
 ///顶部弹窗
-void _bottom(context){
+void _bottom(BuildContext context) {
   List<BtnInfo> list = [];
   for (var i = 0; i < 10; i++) {
     list.add(BtnInfo(title: "姓名-$i", tag: i.toString()));

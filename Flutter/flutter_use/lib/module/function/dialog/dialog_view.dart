@@ -4,6 +4,8 @@ import 'package:flutter_use/module/function/dialog/dialog_cubit.dart';
 import 'package:flutter_use/module/function/widget/function_items.dart';
 
 class DialogPage extends StatelessWidget {
+  const DialogPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -20,9 +22,9 @@ class DialogPage extends StatelessWidget {
   Widget _body(BuildContext context, DialogState state) {
     return FunctionItems(
       items: state.items,
-      constraints: BoxConstraints(minWidth: 100, minHeight: 36),
+      constraints: const BoxConstraints(minWidth: 100, minHeight: 36),
       onItem: (String tag) {
-        BlocProvider.of<DialogCubit>(context).showFun(context, tag);
+        context.read<DialogCubit>().showFun(context, tag);
       },
     );
   }

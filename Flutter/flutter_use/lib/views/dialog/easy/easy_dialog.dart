@@ -12,7 +12,7 @@ enum ShowStatus {
 
 class EasyDialog {
   //弹窗是否被打开 true:打开状态   false:弹窗已经被关闭
-  static bool isOpen;
+  static bool isOpen = false;
 
   EasyDialog.init() {
     _darkMask();
@@ -20,7 +20,7 @@ class EasyDialog {
   }
 
   static void _darkMask() {
-    EasyDialog.instance
+    EasyLoading.instance
       ..displayDuration = const Duration(milliseconds: 2000)
       ..indicatorType = EasyLoadingIndicatorType.fadingCircle
       ..indicatorSize = 45.0
@@ -35,7 +35,7 @@ class EasyDialog {
   }
 
   static void _noneMask() {
-    EasyDialog.instance
+    EasyLoading.instance
       ..displayDuration = const Duration(milliseconds: 2000)
       ..indicatorType = EasyLoadingIndicatorType.fadingCircle
       ..indicatorSize = 45.0
@@ -50,37 +50,37 @@ class EasyDialog {
 
   static EasyLoading get instance => EasyLoading.instance;
 
-  static void show({String status, Widget indicator}) {
+  static void show({String? status, Widget? indicator}) {
     _dealShow(ShowStatus.show);
     EasyLoading.show(status: status, indicator: indicator);
   }
 
   /// show progress with [value] [status], value should be 0.0 ~ 1.0.
-  static void showProgress(double value, {String status}) {
+  static void showProgress(double value, {String? status}) {
     _dealShow(ShowStatus.showProgress);
     EasyLoading.showProgress(value, status: status);
   }
 
   /// showSuccess [status] [duration]
-  static void showSuccess(String status, {Duration duration}) {
+  static void showSuccess(String status, {Duration? duration}) {
     _dealShow(ShowStatus.showSuccess);
     EasyLoading.showSuccess(status, duration: duration);
   }
 
   /// showError [status] [duration]
-  static void showError(String status, {Duration duration}) {
+  static void showError(String status, {Duration? duration}) {
     _dealShow(ShowStatus.showError);
     EasyLoading.showError(status, duration: duration);
   }
 
   /// showInfo [status] [duration]
-  static void showInfo(String status, {Duration duration}) {
+  static void showInfo(String status, {Duration? duration}) {
     _dealShow(ShowStatus.showInfo);
     EasyLoading.showInfo(status, duration: duration);
   }
 
   /// showToast [status] [duration]
-  static void showToast(String msg, {Duration duration}) {
+  static void showToast(String msg, {Duration? duration}) {
     _dealShow(ShowStatus.showToast);
 
     EasyLoading.showToast(msg, duration: duration);

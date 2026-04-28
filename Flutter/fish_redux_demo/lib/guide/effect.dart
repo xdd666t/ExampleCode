@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart' hide Action;
 import 'action.dart';
 import 'state.dart';
 
-Effect<GuideState> buildEffect() {
+Effect<GuideState>? buildEffect() {
   return combineEffects(<Object, Effect<GuideState>>{
     GuideAction.toCount: _toCount,
     GuideAction.toJump: _toJump,

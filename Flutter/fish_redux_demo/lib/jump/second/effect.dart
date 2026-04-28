@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart' hide Action;
 import 'action.dart';
 import 'state.dart';
 
-Effect<SecondState> buildEffect() {
+Effect<SecondState>? buildEffect() {
   return combineEffects(<Object, Effect<SecondState>>{
     SecondAction.backFirst: _backFirst,
   });

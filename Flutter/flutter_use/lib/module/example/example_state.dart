@@ -1,7 +1,9 @@
 part of 'example_cubit.dart';
 
 class ExampleState {
-  List trees;
+  List<TreeTwiceInfo> trees;
+
+  ExampleState() : trees = [];
 
   ExampleState init() {
     var trees = [

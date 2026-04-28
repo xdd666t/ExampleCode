@@ -8,8 +8,8 @@ class TreeTwiceInfo {
   });
 
   ///一级大标题
-  String title;
+  String? title;
 
   ///二级内容
-  List btnInfo;
+  List<BtnInfo>? btnInfo;
 }

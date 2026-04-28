@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_picker/Picker.dart';
+import 'package:flutter_picker/flutter_picker.dart';
 import 'package:flutter_use/app/typedef/function.dart';
 import 'package:flutter_use/app/utils/ui/auto_ui.dart';
 
@@ -9,8 +9,8 @@ import 'package:flutter_use/app/utils/ui/auto_ui.dart';
 ///展示内容item默认为 "name" 可以使用 showKey字段指定展示key值
 void showBottomSingleDialog<E>(
   BuildContext context, {
-  @required List<E> list,
-  @required ParamSingleCallback<E> callback,
+  required List<E> list,
+  required ParamSingleCallback<E> callback,
   String title = '请选择',
   String showKey = '',
 }) {
@@ -22,8 +22,8 @@ void showBottomSingleDialog<E>(
       showContent = item as String;
     } else {
       //将实体转成map，通过设置的key指定展示的字段
-      var map = json.decode(jsonEncode(item));
-      showContent = map[showKey];
+      var map = json.decode(jsonEncode(item)) as Map<String, dynamic>;
+      showContent = map[showKey] as String;
     }
 
     pickList.add(
@@ -42,10 +42,10 @@ void showBottomSingleDialog<E>(
     title: Text(title),
     cancelText: "取消",
     confirmText: "确定",
-    onConfirm: (Picker picker, List value) async {
+    onConfirm: (Picker picker, List<int> value) async {
       //必须做一个延时操作,先执行回调内部的pop,不然pop页面无法回传值
-      await Future.delayed(Duration(milliseconds: 10));
-      callback(picker.getSelectedValues()[0]);
+      await Future.delayed(const Duration(milliseconds: 10));
+      callback(picker.getSelectedValues()[0] as E);
     },
   );
 

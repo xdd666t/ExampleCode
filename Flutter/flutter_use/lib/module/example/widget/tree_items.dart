@@ -6,16 +6,17 @@ import 'package:flutter_use/module/function/widget/function_items.dart';
 
 ///树形item控件
 class TreeItems extends StatelessWidget {
-  TreeItems({
+  const TreeItems({
+    super.key,
     this.data,
     this.onItem,
   });
 
   ///树形数据源
-  final List<TreeTwiceInfo> data;
+  final List<TreeTwiceInfo>? data;
 
   ///点击按钮
-  final ParamSingleCallback<String> onItem;
+  final ParamSingleCallback<String>? onItem;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +24,11 @@ class TreeItems extends StatelessWidget {
   }
 
   Widget _treeItem() {
+    final items = data ?? [];
     return Container(
       margin: EdgeInsets.symmetric(horizontal: auto(30)),
       child: Column(
-        children: data.map((e) {
+        children: items.map((e) {
           return _buildItem(e);
         }).toList(),
       ),
@@ -43,14 +45,14 @@ class TreeItems extends StatelessWidget {
           margin: EdgeInsets.only(top: auto(50), bottom: auto(10)),
           width: double.infinity,
           child: Text(
-            e.title,
+            e.title ?? '',
             style: TextStyle(fontSize: setSp(20), fontWeight: FontWeight.bold),
           ),
         ),
 
         //按钮入口
         FunctionItems(
-          items: e.btnInfo,
+          items: e.btnInfo ?? [],
           onItem: onItem,
           padding: EdgeInsets.zero,
         )

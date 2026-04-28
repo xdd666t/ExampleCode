@@ -4,17 +4,18 @@ import 'package:fish_redux_demo/store/state.dart';
 class CountState implements Cloneable<CountState>, GlobalBaseState {
   int count;
 
+  CountState({this.count = 0});
+
   @override
   CountState clone() {
-    return CountState()
-      ..count = count
+    return CountState(count: count)
       ..store = store;
   }
 
   @override
-  StoreModel store;
+  StoreModel? store;
 }
 
-CountState initState(Map<String, dynamic> args) {
+CountState initState(Map<String, dynamic>? args) {
   return CountState()..count = 0;
 }

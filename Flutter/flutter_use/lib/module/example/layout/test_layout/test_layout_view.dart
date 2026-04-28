@@ -4,6 +4,8 @@ import 'package:flutter_use/app/utils/ui/show.dart';
 import 'package:flutter_use/module/example/layout/test_layout/test_layout_cubit.dart';
 
 class TestLayoutPage extends StatelessWidget {
+  const TestLayoutPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -14,7 +16,7 @@ class TestLayoutPage extends StatelessWidget {
 
   Widget _buildBody(BuildContext context, TestLayoutState state) {
     return Scaffold(
-      appBar: AppBar(title: Text('测试布局')),
+      appBar: AppBar(title: const Text('测试布局')),
       body: Center(
         child: Stack(
           alignment: Alignment.center,

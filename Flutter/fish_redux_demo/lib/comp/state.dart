@@ -7,27 +7,35 @@ class CompState implements Cloneable<CompState> {
   AreaState leftAreaState;
   AreaState rightAreaState;
 
+  CompState({
+    AreaState? leftAreaState,
+    AreaState? rightAreaState,
+  })  : leftAreaState = leftAreaState ?? AreaState(),
+        rightAreaState = rightAreaState ?? AreaState();
+
   @override
   CompState clone() {
-    return CompState()
-      ..rightAreaState = rightAreaState
-      ..leftAreaState = leftAreaState;
+    return CompState(
+      rightAreaState: rightAreaState,
+      leftAreaState: leftAreaState,
+    );
   }
 }
 
-CompState initState(Map<String, dynamic> args) {
+CompState initState(Map<String, dynamic>? args) {
   ///初始化数据
-  return CompState()
-    ..rightAreaState = AreaState(
+  return CompState(
+    rightAreaState: AreaState(
       title: "LeftAreaComponent",
       text: "LeftAreaComponent",
       color: Colors.indigoAccent,
-    )
-    ..leftAreaState = AreaState(
+    ),
+    leftAreaState: AreaState(
       title: "RightAreaComponent",
       text: "RightAreaComponent",
       color: Colors.blue,
-    );
+    ),
+  );
 }
 
 ///左边Component连接器

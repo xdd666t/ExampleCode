@@ -10,5 +10,5 @@ class MainInitEvent extends MainEvent {}
 class SwitchTabEvent extends MainEvent {
   final int selectedIndex;
 
-  SwitchTabEvent({@required this.selectedIndex});
+  SwitchTabEvent({required this.selectedIndex});
 }

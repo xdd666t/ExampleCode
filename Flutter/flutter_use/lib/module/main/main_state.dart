@@ -2,38 +2,37 @@ part of 'main_bloc.dart';
 
 class MainState {
   int selectedIndex;
-
-  //分类按钮数据源
-  List<BtnInfo> list;
-
-  ///Navigation的item信息
   List<BtnInfo> itemList;
-
-  ///PageView页面
   List<Widget> pageList;
   PageController pageController;
+
+  MainState()
+      : selectedIndex = 0,
+        itemList = [],
+        pageList = [],
+        pageController = PageController();
 
   MainState init() {
     ///item栏目
     List<BtnInfo> itemList = [
       BtnInfo(
         title: "范例",
-        icon: Icon(Icons.opacity),
+        icon: const Icon(Icons.opacity),
       ),
       BtnInfo(
         title: "功能",
-        icon: Icon(Icons.bubble_chart),
+        icon: const Icon(Icons.bubble_chart),
       ),
       BtnInfo(
         title: "设置",
-        icon: Icon(Icons.settings),
+        icon: const Icon(Icons.settings),
       ),
     ];
 
     ///PageView页面
     List<Widget> pageList = [
-      ExamplePage(),
-      FunctionPage(),
+      const ExamplePage(),
+      const FunctionPage(),
       Center(child: Container()),
     ];
 

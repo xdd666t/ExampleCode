@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart' hide Action;
 import 'action.dart';
 import 'state.dart';
 
-Reducer<CompState> buildReducer() {
+Reducer<CompState>? buildReducer() {
   return asReducer(
     <Object, Reducer<CompState>>{
       CompAction.change: _change,

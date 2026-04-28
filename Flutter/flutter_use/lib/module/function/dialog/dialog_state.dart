@@ -1,7 +1,9 @@
 part of 'dialog_cubit.dart';
 
 class DialogState {
-  List items;
+  List<BtnInfo> items;
+
+  DialogState() : items = [];
 
   DialogState init() {
     var items = [

@@ -6,6 +6,8 @@ import 'function_cubit.dart';
 import 'function_state.dart';
 
 class FunctionPage extends StatelessWidget {
+  const FunctionPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -19,7 +21,7 @@ class FunctionPage extends StatelessWidget {
     return FunctionItems(
       items: state.items,
       onItem: (String tag) {
-        BlocProvider.of<FunctionCubit>(context).toFun(context, tag);
+        context.read<FunctionCubit>().toFun(context, tag);
       },
     );
   }

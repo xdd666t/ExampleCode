@@ -3,7 +3,7 @@ import 'package:fish_redux/fish_redux.dart';
 import 'action.dart';
 import 'state.dart';
 
-Reducer<ListState> buildReducer() {
+Reducer<ListState>? buildReducer() {
   return asReducer(
     <Object, Reducer<ListState>>{
       ListAction.updateItem: _updateItem,

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'smart_dialog.dart';
 
 class FlutterSmartDialog extends StatefulWidget {
-  FlutterSmartDialog({
-    Key key,
-    @required this.child,
-  }) : super(key: key);
+  const FlutterSmartDialog({
+    super.key,
+    required this.child,
+  });
 
   final Widget child;
 
   @override
-  _FlutterSmartDialogState createState() => _FlutterSmartDialogState();
+  State<FlutterSmartDialog> createState() => _FlutterSmartDialogState();
 }
 
 class _FlutterSmartDialogState extends State<FlutterSmartDialog> {
@@ -32,7 +32,7 @@ class _FlutterSmartDialogState extends State<FlutterSmartDialog> {
           OverlayEntry(builder: (BuildContext context) => widget.child),
 
           //添加的控件,覆盖在主体布局上面
-          SmartDialog.instance.overlayEntry,
+          SmartDialog.instance.overlayEntry!,
         ],
       ),
     );

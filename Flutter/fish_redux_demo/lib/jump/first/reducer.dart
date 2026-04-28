@@ -4,7 +4,7 @@ import 'package:fish_redux_demo/jump/second/state.dart';
 import 'action.dart';
 import 'state.dart';
 
-Reducer<FirstState> buildReducer() {
+Reducer<FirstState>? buildReducer() {
   return asReducer(
     <Object, Reducer<FirstState>>{
       FirstAction.updateMsg: _updateMsg,

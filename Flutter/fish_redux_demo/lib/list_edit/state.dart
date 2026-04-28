@@ -3,12 +3,14 @@ import 'package:fish_redux/fish_redux.dart';
 import 'adapter.dart';
 import 'item/state.dart';
 
-class ListEditState extends MutableSource implements Cloneable<ListEditState> {
+class ListEditState extends MutableItemListLike implements Cloneable<ListEditState> {
   List<ItemState> items;
+
+  ListEditState({List<ItemState>? items}) : items = items ?? [];
 
   @override
   ListEditState clone() {
-    return ListEditState()..items = items;
+    return ListEditState(items: items);
   }
 
   @override
@@ -22,18 +24,19 @@ class ListEditState extends MutableSource implements Cloneable<ListEditState> {
 
   @override
   void setItemData(int index, Object data) {
-    items[index] = data;
+    items[index] = data as ItemState;
   }
 }
 
-ListEditState initState(Map<String, dynamic> args) {
-  return ListEditState()
-    ..items = [
+ListEditState initState(Map<String, dynamic>? args) {
+  return ListEditState(
+    items: [
       ItemState(id: 1, title: "列表Item-1", itemStatus: false),
       ItemState(id: 2, title: "列表Item-2", itemStatus: true),
       ItemState(id: 3, title: "列表Item-3", itemStatus: false),
       ItemState(id: 4, title: "列表Item-4", itemStatus: true),
       ItemState(id: 5, title: "列表Item-5", itemStatus: true),
       ItemState(id: 6, title: "列表Item-6", itemStatus: false),
-    ];
+    ],
+  );
 }

@@ -5,27 +5,28 @@ import 'action.dart';
 import 'state.dart';
 
 Widget buildView(SecondState state, Dispatch dispatch, ViewService viewService) {
-  return WillPopScope(
-    child: _bodyWidget(state),
-    onWillPop: () {
-      dispatch(SecondActionCreator.backFirst());
-      ///true：表示执行页面返回    false:表示不执行返回页面操作，这里因为要传值，所以接管返回操作
-      return Future.value(false);
+  return PopScope(
+    canPop: false,
+    onPopInvokedWithResult: (didPop, result) {
+      if (!didPop) {
+        dispatch(SecondActionCreator.backFirst());
+      }
     },
+    child: _bodyWidget(state),
   );
 }
 
 Widget _bodyWidget(SecondState state) {
   return Scaffold(
     appBar: AppBar(
-      title: Text("SecondPage"),
-      backgroundColor: state.store.themeColor,
+      title: const Text("SecondPage"),
+      backgroundColor: state.store?.themeColor,
     ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('下方数据是FirstPage页面传递过来的:'),
+          const Text('下方数据是FirstPage页面传递过来的:'),
           Text(state.msg),
         ],
       ),

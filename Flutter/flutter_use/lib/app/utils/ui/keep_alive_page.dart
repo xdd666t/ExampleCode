@@ -5,11 +5,11 @@ Widget keepAliveWrapper(Widget child) => KeepAliveWidget(child);
 
 class KeepAliveWidget extends StatefulWidget {
   final Widget child;
-  const KeepAliveWidget(this.child);
+  const KeepAliveWidget(this.child, {super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return  _KeepAliveState();
+    return _KeepAliveState();
   }
 }
 
@@ -23,4 +23,3 @@ class _KeepAliveState extends State<KeepAliveWidget> with AutomaticKeepAliveClie
     return widget.child;
   }
 }
-

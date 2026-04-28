@@ -1,7 +1,9 @@
 import 'package:flutter_use/bean/common/btn_info.dart';
 
 class FunctionState {
-  List items;
+  List<BtnInfo> items;
+
+  FunctionState() : items = [];
 
   FunctionState init() {
     var items = [

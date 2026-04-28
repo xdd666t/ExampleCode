@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:fish_redux/fish_redux.dart';
 import 'package:fish_redux_demo/store/state.dart';
 
@@ -10,18 +8,18 @@ class FirstState implements Cloneable<FirstState>, GlobalBaseState {
   ///展示传递过来的值
   String msg;
 
+  FirstState({this.msg = ''});
+
   @override
   FirstState clone() {
-    return FirstState()
-      ..msg = msg
+    return FirstState(msg: msg)
       ..store = store;
   }
 
-
   @override
-  StoreModel store;
+  StoreModel? store;
 }
 
-FirstState initState(Map<String, dynamic> args) {
-  return FirstState()..msg = "\n暂无";
+FirstState initState(Map<String, dynamic>? args) {
+  return FirstState(msg: "\n暂无");
 }

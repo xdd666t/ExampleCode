@@ -4,7 +4,8 @@ import 'reducer.dart';
 
 /// 建立一个AppStore
 /// 目前它的功能只有切换主题
-class GlobalStore{
-  static Store<GlobalState> _globalStore;
-  static Store<GlobalState> get store => _globalStore ??= createStore<GlobalState>(GlobalState(), buildReducer());
+class GlobalStore {
+  static Store<GlobalState>? _globalStore;
+  static Store<GlobalState> get store =>
+      _globalStore ??= createStore<GlobalState>(GlobalState(), buildReducer()!);
 }

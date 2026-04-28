@@ -11,16 +11,16 @@ Widget buildView(CountState state, Dispatch dispatch, ViewService viewService) {
 Widget _bodyWidget(CountState state, Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
-      title: Text("FishRedux"),
+      title: const Text("FishRedux"),
 
       ///全局主题，仅仅在此处改动了一行
-      backgroundColor: state.store.themeColor,
+      backgroundColor: state.store?.themeColor,
     ),
     body: Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('You have pushed the button this many times:'),
+          const Text('You have pushed the button this many times:'),
           Text(state.count.toString()),
         ],
       ),
@@ -30,7 +30,7 @@ Widget _bodyWidget(CountState state, Dispatch dispatch) {
         ///点击事件，调用action 计数自增方法
         dispatch(CountActionCreator.updateCount());
       },
-      child: Icon(Icons.add),
+      child: const Icon(Icons.add),
     ),
   );
 }

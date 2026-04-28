@@ -5,18 +5,18 @@ class ItemState implements Cloneable<ItemState> {
   String title;
   bool itemStatus;
 
-
-  ItemState({this.id, this.title, this.itemStatus});
+  ItemState({this.id = 0, this.title = '', this.itemStatus = false});
 
   @override
   ItemState clone() {
-    return ItemState()
-      ..title = title
-      ..itemStatus = itemStatus
-      ..id = id;
+    return ItemState(
+      title: title,
+      itemStatus: itemStatus,
+      id: id,
+    );
   }
 }
 
-ItemState initState(Map<String, dynamic> args) {
+ItemState initState(Map<String, dynamic>? args) {
   return ItemState();
 }

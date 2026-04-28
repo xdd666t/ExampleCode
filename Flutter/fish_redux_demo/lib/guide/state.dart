@@ -8,9 +8,9 @@ class GuideState implements Cloneable<GuideState>, GlobalBaseState {
   }
 
   @override
-  StoreModel store;
+  StoreModel? store;
 }
 
-GuideState initState(Map<String, dynamic> args) {
+GuideState initState(Map<String, dynamic>? args) {
   return GuideState();
 }

@@ -3,18 +3,19 @@ import 'package:flutter_use/app/typedef/function.dart';
 import 'package:flutter_use/app/utils/ui/auto_ui.dart';
 
 class FunctionItems extends StatelessWidget {
-  FunctionItems({
-    this.items,
+  const FunctionItems({
+    super.key,
+    this.items = const [],
     this.onItem,
     this.constraints = const BoxConstraints(minWidth: 150, minHeight: 36.0),
     this.padding = const EdgeInsets.all(30),
   });
 
   ///数据源
-  final List items;
+  final List<dynamic> items;
 
   ///监听点击的按钮
-  final ParamSingleCallback<String> onItem;
+  final ParamSingleCallback<String>? onItem;
 
   ///约束布局
   final BoxConstraints constraints;
@@ -45,7 +46,7 @@ class FunctionItems extends StatelessWidget {
   }
 
   ///整体背景
-  Widget _buildBg({child}) {
+  Widget _buildBg({required Widget child}) {
     return Container(
       padding: padding,
       child: SingleChildScrollView(
@@ -60,9 +61,9 @@ class FunctionItems extends StatelessWidget {
 
 ///功能性按钮
 Widget btnFunction({
-  ParamSingleCallback<String> onItem,
-  data,
-  BoxConstraints constraints,
+  ParamSingleCallback<String>? onItem,
+  required dynamic data,
+  required BoxConstraints constraints,
 }) {
   return Container(
     padding: EdgeInsets.all(auto(15)),
@@ -74,7 +75,7 @@ Widget btnFunction({
       constraints: constraints,
       elevation: 5,
       onPressed: () {
-        onItem(data.tag);
+        onItem?.call(data.tag as String);
       },
       child: Container(
         padding: EdgeInsets.symmetric(
@@ -82,7 +83,7 @@ Widget btnFunction({
           horizontal: auto(20),
         ),
         child: Text(
-          data.title,
+          data.title as String,
         ),
       ),
     ),

@@ -10,7 +10,8 @@ typedef SearchParamSingleCallback<D> = dynamic Function(D data);
 typedef SearchParamVoidCallback = dynamic Function();
 
 class SearchBar extends StatefulWidget {
-  SearchBar({
+  const SearchBar({
+    super.key,
     this.inputFormatters,
     this.hintText = '请输入',
     this.hintColor = const Color(0xFFCCCCCC),
@@ -25,7 +26,7 @@ class SearchBar extends StatefulWidget {
   });
 
   ///限制输入条件
-  final List<TextInputFormatter> inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
 
   ///提示文字和样式颜色
   final String hintText;
@@ -35,38 +36,38 @@ class SearchBar extends StatefulWidget {
   final Color textColor;
 
   ///唤起不同的键盘类型
-  final TextInputType keyboardType;
+  final TextInputType? keyboardType;
 
   ///是否自动聚焦焦点
-  final bool autofocus;
+  final bool? autofocus;
 
   ///icon颜色
   final Color iconColor;
 
   ///回调输入的数据
-  final SearchParamSingleCallback<String> onChanged;
+  final SearchParamSingleCallback<String>? onChanged;
 
   ///输入完成  点击键盘上: 收缩,Ok等按钮
-  final SearchParamSingleCallback<String> onComplete;
+  final SearchParamSingleCallback<String>? onComplete;
 
   ///删除监听
-  final SearchParamVoidCallback onClear;
+  final SearchParamVoidCallback? onClear;
 
   ///输入框控制器
-  final TextEditingController controller;
+  final TextEditingController? controller;
 
   @override
-  _SearchBarState createState() => _SearchBarState();
+  State<SearchBar> createState() => _SearchBarState();
 }
 
 class _SearchBarState extends State<SearchBar>
     with SingleTickerProviderStateMixin {
-  FocusNode focusNode;
-  TextEditingController controller;
+  late FocusNode focusNode;
+  late TextEditingController controller;
 
   ///动画
-  AnimationController animationController;
-  Animation animation;
+  late AnimationController animationController;
+  late Animation<double> animation;
 
   @override
   void initState() {
@@ -76,9 +77,9 @@ class _SearchBarState extends State<SearchBar>
     controller = widget.controller ?? TextEditingController();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
     );
-    animation = Tween(begin: 0.0, end: 1.0)
+    animation = Tween<double>(begin: 0.0, end: 1.0)
         .chain(CurveTween(curve: Curves.easeIn))
         .animate(animationController);
 
@@ -86,7 +87,7 @@ class _SearchBarState extends State<SearchBar>
     controller.addListener(() {
       //处理下删除图标的显示
       String msg = controller.text;
-      if (msg.length != 0) {
+      if (msg.isNotEmpty) {
         animationController.forward();
       } else {
         animationController.reverse();
@@ -128,13 +129,8 @@ class _SearchBarState extends State<SearchBar>
           animationController.reverse();
           controller.clear();
 
-          if (widget.onChanged != null) {
-            widget.onChanged(controller.text);
-          }
-
-          if (widget.onClear != null) {
-            widget.onClear();
-          }
+          widget.onChanged?.call(controller.text);
+          widget.onClear?.call();
         },
         child: ScaleTransition(
           scale: animation,
@@ -156,7 +152,6 @@ class _SearchBarState extends State<SearchBar>
       width: auto(500),
       padding: EdgeInsets.only(left: auto(24)),
       child: InputActions(
-        context: context,
         focusNode: focusNode,
         child: TextField(
           focusNode: focusNode,
@@ -169,7 +164,7 @@ class _SearchBarState extends State<SearchBar>
             fontSize: setSp(28),
           ),
           inputFormatters: widget.inputFormatters,
-          maxLengthEnforced: true,
+          maxLengthEnforcement: MaxLengthEnforcement.enforced,
           textInputAction: TextInputAction.search,
           decoration: InputDecoration(
             ///较小空间时，使组件正常渲染，包括文本垂直居中
@@ -180,19 +175,14 @@ class _SearchBarState extends State<SearchBar>
               fontSize: setSp(24),
             ),
             border: InputBorder.none,
-            contentPadding: EdgeInsets.all(0.0),
+            contentPadding: EdgeInsets.zero,
           ),
           onChanged: (msg) {
             //监听输入的数值
-            if (widget.onChanged != null) {
-              widget.onChanged(msg);
-            }
+            widget.onChanged?.call(msg);
           },
           onEditingComplete: () {
-            if (widget.onComplete != null) {
-              widget.onComplete(controller.text);
-            }
-
+            widget.onComplete?.call(controller.text);
             FocusScope.of(context).requestFocus(FocusNode());
           },
         ),
@@ -208,7 +198,7 @@ class _SearchBarState extends State<SearchBar>
   }
 
   ///主体背景构造
-  Widget _searchBg({Widget child}) {
+  Widget _searchBg({required Widget child}) {
     return Container(
       height: auto(72),
       width: MediaQuery.of(context).size.width,

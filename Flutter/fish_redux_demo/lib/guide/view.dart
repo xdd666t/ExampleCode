@@ -11,8 +11,8 @@ Widget buildView(GuideState state, Dispatch dispatch, ViewService viewService) {
 Widget _bodyWidget(GuideState state, Dispatch dispatch) {
   return Scaffold(
     appBar: AppBar(
-      title: Text("GuidePage"),
-      backgroundColor: state.store.themeColor,
+      title: const Text("GuidePage"),
+      backgroundColor: state.store?.themeColor,
     ),
     body: Center(
       child: Column(
@@ -50,17 +50,17 @@ Widget _jumpButton(String name, CallBack callBack) {
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
     splashColor: Colors.lightBlueAccent,
     highlightColor: Colors.lightBlueAccent,
-    child: RaisedButton(
-      color: Colors.blue,
-      highlightColor: Colors.blue[700],
-      colorBrightness: Brightness.dark,
-      splashColor: Colors.grey,
-      child: Text(name),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+      ),
       onPressed: () {
         ///监听点击事件
         callBack();
       },
+      child: Text(name),
     ),
   );
 }

@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_use/module/example/screen_adapt/screen_adapt_cubit.dart';
 
 class ScreenAdaptView extends StatelessWidget {
+  const ScreenAdaptView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

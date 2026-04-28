@@ -1,35 +1,35 @@
 class ItemDetailBean {
-	Data data;
-	int errorCode;
-	String errorMsg;
+	Data? data;
+	int? errorCode;
+	String? errorMsg;
 
 	ItemDetailBean({this.data, this.errorCode, this.errorMsg});
 
 	ItemDetailBean.fromJson(Map<String, dynamic> json) {
-		data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+		data = json['data'] != null ? Data.fromJson(json['data']) : null;
 		errorCode = json['errorCode'];
 		errorMsg = json['errorMsg'];
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
+		final Map<String, dynamic> data = <String, dynamic>{};
 		if (this.data != null) {
-			data['data'] = this.data.toJson();
+			data['data'] = this.data!.toJson();
 		}
-		data['errorCode'] = this.errorCode;
-		data['errorMsg'] = this.errorMsg;
+		data['errorCode'] = errorCode;
+		data['errorMsg'] = errorMsg;
 		return data;
 	}
 }
 
 class Data {
-	int curPage;
-	List<Datas> datas;
-	int offset;
-	bool over;
-	int pageCount;
-	int size;
-	int total;
+	int? curPage;
+	List<Datas>? datas;
+	int? offset;
+	bool? over;
+	int? pageCount;
+	int? size;
+	int? total;
 
 	Data(
 			{this.curPage,
@@ -43,9 +43,9 @@ class Data {
 	Data.fromJson(Map<String, dynamic> json) {
 		curPage = json['curPage'];
 		if (json['datas'] != null) {
-			datas = new List<Datas>();
+			datas = <Datas>[];
 			json['datas'].forEach((v) {
-				datas.add(new Datas.fromJson(v));
+				datas!.add(Datas.fromJson(v));
 			});
 		}
 		offset = json['offset'];
@@ -56,53 +56,53 @@ class Data {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['curPage'] = this.curPage;
-		if (this.datas != null) {
-			data['datas'] = this.datas.map((v) => v.toJson()).toList();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['curPage'] = curPage;
+		if (datas != null) {
+			data['datas'] = datas!.map((v) => v.toJson()).toList();
 		}
-		data['offset'] = this.offset;
-		data['over'] = this.over;
-		data['pageCount'] = this.pageCount;
-		data['size'] = this.size;
-		data['total'] = this.total;
+		data['offset'] = offset;
+		data['over'] = over;
+		data['pageCount'] = pageCount;
+		data['size'] = size;
+		data['total'] = total;
 		return data;
 	}
 }
 
 class Datas {
-	String apkLink;
-	int audit;
-	String author;
-	bool canEdit;
-	int chapterId;
-	String chapterName;
-	bool collect;
-	int courseId;
-	String desc;
-	String descMd;
-	String envelopePic;
-	bool fresh;
-	int id;
-	String link;
-	String niceDate;
-	String niceShareDate;
-	String origin;
-	String prefix;
-	String projectLink;
-	int publishTime;
-	int realSuperChapterId;
-	int selfVisible;
-	int shareDate;
-	String shareUser;
-	int superChapterId;
-	String superChapterName;
-	List<Tags> tags;
-	String title;
-	int type;
-	int userId;
-	int visible;
-	int zan;
+	String? apkLink;
+	int? audit;
+	String? author;
+	bool? canEdit;
+	int? chapterId;
+	String? chapterName;
+	bool? collect;
+	int? courseId;
+	String? desc;
+	String? descMd;
+	String? envelopePic;
+	bool? fresh;
+	int? id;
+	String? link;
+	String? niceDate;
+	String? niceShareDate;
+	String? origin;
+	String? prefix;
+	String? projectLink;
+	int? publishTime;
+	int? realSuperChapterId;
+	int? selfVisible;
+	int? shareDate;
+	String? shareUser;
+	int? superChapterId;
+	String? superChapterName;
+	List<Tags>? tags;
+	String? title;
+	int? type;
+	int? userId;
+	int? visible;
+	int? zan;
 
 	Datas(
 			{this.apkLink,
@@ -166,9 +166,9 @@ class Datas {
 		superChapterId = json['superChapterId'];
 		superChapterName = json['superChapterName'];
 		if (json['tags'] != null) {
-			tags = new List<Tags>();
+			tags = <Tags>[];
 			json['tags'].forEach((v) {
-				tags.add(new Tags.fromJson(v));
+				tags!.add(Tags.fromJson(v));
 			});
 		}
 		title = json['title'];
@@ -179,48 +179,48 @@ class Datas {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['apkLink'] = this.apkLink;
-		data['audit'] = this.audit;
-		data['author'] = this.author;
-		data['canEdit'] = this.canEdit;
-		data['chapterId'] = this.chapterId;
-		data['chapterName'] = this.chapterName;
-		data['collect'] = this.collect;
-		data['courseId'] = this.courseId;
-		data['desc'] = this.desc;
-		data['descMd'] = this.descMd;
-		data['envelopePic'] = this.envelopePic;
-		data['fresh'] = this.fresh;
-		data['id'] = this.id;
-		data['link'] = this.link;
-		data['niceDate'] = this.niceDate;
-		data['niceShareDate'] = this.niceShareDate;
-		data['origin'] = this.origin;
-		data['prefix'] = this.prefix;
-		data['projectLink'] = this.projectLink;
-		data['publishTime'] = this.publishTime;
-		data['realSuperChapterId'] = this.realSuperChapterId;
-		data['selfVisible'] = this.selfVisible;
-		data['shareDate'] = this.shareDate;
-		data['shareUser'] = this.shareUser;
-		data['superChapterId'] = this.superChapterId;
-		data['superChapterName'] = this.superChapterName;
-		if (this.tags != null) {
-			data['tags'] = this.tags.map((v) => v.toJson()).toList();
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['apkLink'] = apkLink;
+		data['audit'] = audit;
+		data['author'] = author;
+		data['canEdit'] = canEdit;
+		data['chapterId'] = chapterId;
+		data['chapterName'] = chapterName;
+		data['collect'] = collect;
+		data['courseId'] = courseId;
+		data['desc'] = desc;
+		data['descMd'] = descMd;
+		data['envelopePic'] = envelopePic;
+		data['fresh'] = fresh;
+		data['id'] = id;
+		data['link'] = link;
+		data['niceDate'] = niceDate;
+		data['niceShareDate'] = niceShareDate;
+		data['origin'] = origin;
+		data['prefix'] = prefix;
+		data['projectLink'] = projectLink;
+		data['publishTime'] = publishTime;
+		data['realSuperChapterId'] = realSuperChapterId;
+		data['selfVisible'] = selfVisible;
+		data['shareDate'] = shareDate;
+		data['shareUser'] = shareUser;
+		data['superChapterId'] = superChapterId;
+		data['superChapterName'] = superChapterName;
+		if (tags != null) {
+			data['tags'] = tags!.map((v) => v.toJson()).toList();
 		}
-		data['title'] = this.title;
-		data['type'] = this.type;
-		data['userId'] = this.userId;
-		data['visible'] = this.visible;
-		data['zan'] = this.zan;
+		data['title'] = title;
+		data['type'] = type;
+		data['userId'] = userId;
+		data['visible'] = visible;
+		data['zan'] = zan;
 		return data;
 	}
 }
 
 class Tags {
-	String name;
-	String url;
+	String? name;
+	String? url;
 
 	Tags({this.name, this.url});
 
@@ -230,9 +230,9 @@ class Tags {
 	}
 
 	Map<String, dynamic> toJson() {
-		final Map<String, dynamic> data = new Map<String, dynamic>();
-		data['name'] = this.name;
-		data['url'] = this.url;
+		final Map<String, dynamic> data = <String, dynamic>{};
+		data['name'] = name;
+		data['url'] = url;
 		return data;
 	}
 }

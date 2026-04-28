@@ -6,6 +6,8 @@ import 'example_cubit.dart';
 import 'widget/tree_items.dart';
 
 class ExamplePage extends StatelessWidget {
+  const ExamplePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -19,7 +21,7 @@ class ExamplePage extends StatelessWidget {
     return TreeItems(
       data: state.trees,
       onItem: (String tag) {
-        BlocProvider.of<ExampleCubit>(context).toFun(context, tag);
+        context.read<ExampleCubit>().toFun(context, tag);
       },
     );
   }

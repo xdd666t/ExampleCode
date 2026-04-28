@@ -21,7 +21,7 @@ Widget createApp() {
     onGenerateRoute: (RouteSettings settings) {
       return MaterialPageRoute(
         builder: (BuildContext context) {
-          return RouteConfig.routes.buildPage(settings.name, settings.arguments);
+          return RouteConfig.routes.buildPage(settings.name ?? '', settings.arguments);
         },
         settings: settings,
       );
@@ -69,19 +69,19 @@ class StoreConfig {
   ///全局状态管理
   static _updateState() {
     return (Object pageState, GlobalState appState) {
-      final GlobalBaseState p = pageState;
+      final GlobalBaseState p = pageState as GlobalBaseState;
 
       if (pageState is Cloneable) {
-        final Object copy = pageState.clone();
-        final GlobalBaseState newState = copy;
+        final Object copy = (pageState as Cloneable).clone();
+        final GlobalBaseState newState = copy as GlobalBaseState;
 
         if (p.store == null) {
           ///这地方的判断是必须的，判断第一次store对象是否为空
           newState.store = appState.store;
         } else {
           /// 这地方增加字段判断，是否需要更新
-          if ((p.store.themeColor != appState.store.themeColor)) {
-            newState.store.themeColor = appState.store.themeColor;
+          if (p.store!.themeColor != appState.store?.themeColor) {
+            newState.store = StoreModel(themeColor: appState.store?.themeColor ?? Colors.blue);
           }
 
           /// 下列一系列对比...

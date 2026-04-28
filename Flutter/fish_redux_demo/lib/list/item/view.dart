@@ -1,5 +1,4 @@
 import 'package:fish_redux/fish_redux.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'state.dart';
@@ -9,20 +8,24 @@ Widget buildView(ItemState state, Dispatch dispatch, ViewService viewService) {
 }
 
 Widget _bodyWidget(ItemState state) {
+  final detail = state.itemDetail;
+  if (detail == null) return const SizedBox.shrink();
+
   return Card(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
     elevation: 5,
-    margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+    margin: const EdgeInsets.only(left: 20, right: 20, top: 20),
     child: Row(
       children: <Widget>[
         //左边图片
         Container(
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.all(10),
           width: 180,
           height: 100,
           child: Image.network(
-            state.itemDetail.envelopePic,
+            detail.envelopePic ?? '',
             fit: BoxFit.fill,
+            errorBuilder: (_, __, ___) => const Icon(Icons.image),
           ),
         ),
         //右边的纵向布局
@@ -34,9 +37,12 @@ Widget _bodyWidget(ItemState state) {
 
 ///item中右边的纵向布局
 Widget _rightContent(ItemState state) {
+  final detail = state.itemDetail;
+  if (detail == null) return const SizedBox.shrink();
+
   return Expanded(
       child: Container(
-    margin: EdgeInsets.all(10),
+    margin: const EdgeInsets.all(10),
     height: 120,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -47,8 +53,8 @@ Widget _rightContent(ItemState state) {
           child: Container(
             alignment: Alignment.centerLeft,
             child: Text(
-              state.itemDetail.title,
-              style: TextStyle(fontSize: 16),
+              detail.title ?? '',
+              style: const TextStyle(fontSize: 16),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -60,8 +66,8 @@ Widget _rightContent(ItemState state) {
             child: Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                state.itemDetail.desc,
-                style: TextStyle(fontSize: 12),
+                detail.desc ?? '',
+                style: const TextStyle(fontSize: 12),
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -74,20 +80,20 @@ Widget _rightContent(ItemState state) {
               //作者
               Row(
                 children: <Widget>[
-                  Text("作者：", style: TextStyle(fontSize: 12)),
+                  const Text("作者：", style: TextStyle(fontSize: 12)),
                   Expanded(
-                    child: Text(state.itemDetail.author,
-                        style: TextStyle(color: Colors.blue, fontSize: 12),
+                    child: Text(detail.author ?? '',
+                        style: const TextStyle(color: Colors.blue, fontSize: 12),
                         overflow: TextOverflow.ellipsis),
                   )
                 ],
               ),
               //时间
               Row(children: <Widget>[
-                Text("时间：", style: TextStyle(fontSize: 12)),
+                const Text("时间：", style: TextStyle(fontSize: 12)),
                 Expanded(
-                  child: Text(state.itemDetail.niceDate,
-                      style: TextStyle(color: Colors.blue, fontSize: 12),
+                  child: Text(detail.niceDate ?? '',
+                      style: const TextStyle(color: Colors.blue, fontSize: 12),
                       overflow: TextOverflow.ellipsis),
                 )
               ])

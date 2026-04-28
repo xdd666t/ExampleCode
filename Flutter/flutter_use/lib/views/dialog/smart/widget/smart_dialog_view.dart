@@ -5,20 +5,20 @@ import 'package:flutter/material.dart';
 typedef SmartDialogVoidCallBack = void Function();
 
 class SmartDialogView extends StatefulWidget {
-  SmartDialogView({
-    Key key,
-    @required this.child,
+  const SmartDialogView({
+    super.key,
+    required this.child,
     this.onBgTap,
     this.alignment = Alignment.bottomCenter,
     this.isPenetrate = true,
     this.animationDuration = const Duration(milliseconds: 300),
-  }) : super(key: key);
+  });
 
   ///内容widget
   final Widget child;
 
   ///点击背景
-  final SmartDialogVoidCallBack onBgTap;
+  final SmartDialogVoidCallBack? onBgTap;
 
   ///内容控件方向
   final AlignmentGeometry alignment;
@@ -37,18 +37,20 @@ class SmartDialogViewState extends State<SmartDialogView>
     with SingleTickerProviderStateMixin {
   double _opacity = 0.0;
 
-  AnimationController _controller;
+  late AnimationController _controller;
 
-  //处理下内容widget动画放心
-  Offset _offset;
+  //处理下内容widget动画方向
+  Offset _offset = Offset.zero;
 
   @override
   void initState() {
     //处理背景动画
-    Future.delayed(Duration(milliseconds: 10), () {
-      setState(() {
-        _opacity = 1.0;
-      });
+    Future.delayed(const Duration(milliseconds: 10), () {
+      if (mounted) {
+        setState(() {
+          _opacity = 1.0;
+        });
+      }
     });
 
     //处理内容widget动画
@@ -71,9 +73,7 @@ class SmartDialogViewState extends State<SmartDialogView>
         child: Listener(
           behavior: HitTestBehavior.translucent,
           onPointerUp: (event) async {
-            if (widget.onBgTap != null) {
-              widget.onBgTap();
-            }
+            widget.onBgTap?.call();
           },
           child: Container(
             color: widget.isPenetrate ? null : Colors.black.withOpacity(0.3),
@@ -109,7 +109,7 @@ class SmartDialogViewState extends State<SmartDialogView>
     ]);
   }
 
-  Widget _buildBg({List<Widget> children}) {
+  Widget _buildBg({required List<Widget> children}) {
     return Container(
       child: Stack(
         children: children,
@@ -120,24 +120,24 @@ class SmartDialogViewState extends State<SmartDialogView>
   //处理下内容widget动画方向
   void _dealContentAnimate() {
     AlignmentGeometry alignment = widget.alignment;
-    _offset = Offset(0, 0);
+    _offset = const Offset(0, 0);
 
     if (alignment == Alignment.bottomCenter ||
         alignment == Alignment.bottomLeft ||
         alignment == Alignment.bottomRight) {
       //靠下
-      _offset = Offset(0, 1);
+      _offset = const Offset(0, 1);
     } else if (alignment == Alignment.topCenter ||
         alignment == Alignment.topLeft ||
         alignment == Alignment.topRight) {
       //靠上
-      _offset = Offset(0, -1);
+      _offset = const Offset(0, -1);
     } else if (alignment == Alignment.centerLeft) {
       //靠左
-      _offset = Offset(-1, 0);
+      _offset = const Offset(-1, 0);
     } else if (alignment == Alignment.centerRight) {
       //靠右
-      _offset = Offset(1, 0);
+      _offset = const Offset(1, 0);
     } else {
       //居中使用缩放动画
     }
@@ -146,9 +146,11 @@ class SmartDialogViewState extends State<SmartDialogView>
   ///等待动画结束,关闭动画资源
   Future<void> dismiss() async {
     //背景结束动画
-    setState(() {
-      _opacity = 0.0;
-    });
+    if (mounted) {
+      setState(() {
+        _opacity = 0.0;
+      });
+    }
 
     //内容widget结束动画
     _controller.reverse();
